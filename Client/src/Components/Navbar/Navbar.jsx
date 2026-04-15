@@ -36,7 +36,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2.5 group">
-           <img src="/logo.jpeg" alt="shego" />
+           <img src="/logo.png" alt="shego" className='w-12'/>
           </Link>
 
           {/* Desktop Nav Links */}

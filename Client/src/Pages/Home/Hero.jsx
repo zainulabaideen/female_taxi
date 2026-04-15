@@ -4,7 +4,7 @@ import { Shield, ChevronRight, MapPin } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-gradient-to-br from-[#402763] via-[#5a3585] to-[#402763]">
+    <section className="relative min-h-[100vh] flex items-center overflow-hidden bg-gradient-to-br from-[#402763] via-[#5a3585] to-[#402763]">
       {/* Decorative Blobs */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#ffcd60]/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#e1cfe6]/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none" />
@@ -75,16 +75,16 @@ const Hero = () => {
               {/* Main Image Card */}
               <div className="w-[340px] h-[420px] lg:w-[420px] lg:h-[520px] rounded-[2.5rem] overflow-hidden border-4 border-white/20 shadow-2xl shadow-black/40">
                 <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800"
-                  alt="Safe Female Driver — SHEGO"
-                  className="w-full h-full object-cover"
+                  src="/hero-driver.png"
+                  alt="Verified Female Taxi Driver — SHEGO"
+                  className="w-full h-full object-cover object-top"
                 />
                 {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#402763]/40 via-transparent to-transparent rounded-[2.5rem]" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#402763]/50 via-transparent to-transparent rounded-[2.5rem]" />
               </div>
 
               {/* Floating Badge 1 */}
-              <div className="absolute -top-4 -left-6 bg-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-bounce" style={{ animationDuration: '3s' }}>
+              <div className="absolute -top-6 -left-6 bg-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3 animate-bounce" style={{ animationDuration: '3s' }}>
                 <div className="w-9 h-9 bg-[#402763] rounded-xl flex items-center justify-center">
                   <Shield size={16} className="text-[#ffcd60]" />
                 </div>

@@ -13,10 +13,7 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-5">
-              <div className="w-10 h-10 bg-[#ffcd60] rounded-full flex items-center justify-center">
-                <span className="text-[#402763] font-black text-xl">S</span>
-              </div>
-              <span className="text-2xl font-black tracking-tight text-white">SHEGO</span>
+             <img src="/logo.png" alt="SHEGO Logo" className="w-12 object-contain" />
             </Link>
             <p className="text-[#e1cfe6]/70 text-sm leading-relaxed mb-6">
               Safe, reliable, and empowering rides for women — by women. Your safety is our top priority, every single trip.
