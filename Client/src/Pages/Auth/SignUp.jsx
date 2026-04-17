@@ -50,7 +50,7 @@ const SignUp = () => {
   const progressSteps = ['Choose Role', 'Personal Info', role === 'driver' ? 'Driver Setup' : 'Safety Info'];
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#e1cfe6]/30 via-white to-[#402763]/5 py-12 px-6">
+    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#e1cfe6] py-12 px-6">
       <div className="w-full max-w-2xl">
         {/* Logo */}
         <Link to="/" className="flex items-center justify-center gap-2 mb-8">

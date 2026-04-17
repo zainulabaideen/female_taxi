@@ -47,7 +47,7 @@ const Navbar = () => {
                 to={link.to}
                 className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
                   pathname === link.to
-                    ? 'text-[#402763] bg-[#e1cfe6]/60'
+                    ? 'text-[#402763] bg-[#e1cfe6]'
                     : 'text-[#402763]/70 hover:text-[#402763] hover:bg-[#e1cfe6]/40'
                 }`}
               >
