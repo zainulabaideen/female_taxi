@@ -46,7 +46,7 @@ const ContactInfo = () => {
             key={i}
             data-aos="fade-right"
             data-aos-delay={i * 80}
-            className="flex items-start gap-4 bg-white border border-[#e1cfe6]/60 rounded-2xl p-5 hover:shadow-md hover:border-[#402763]/20 transition-all duration-200 group"
+            className="flex items-start gap-4 bg-white/90 border border-[#e1cfe6]/60 rounded-2xl p-5 hover:shadow-md hover:border-[#402763]/20 transition-all duration-200 group"
           >
             <div className={`w-12 h-12 ${item.color} rounded-xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
               <Icon size={20} />

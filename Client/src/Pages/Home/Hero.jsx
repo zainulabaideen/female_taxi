@@ -4,7 +4,7 @@ import { Shield, ChevronRight, MapPin } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[100vh] flex items-center overflow-hidden bg-gradient-to-br from-[#402763] via-[#5a3585] to-[#402763]">
+    <section className="relative h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#402763] via-[#5a3585] to-[#402763]">
       {/* Decorative Blobs */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#ffcd60]/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#e1cfe6]/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none" />
@@ -18,23 +18,23 @@ const Hero = () => {
         }}
       />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
+      <div className="container mx-auto px-6 relative z-10 py-16 pb-24">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
           {/* Left Content */}
-          <div className="lg:w-1/2" data-aos="fade-up">
+          <div className="lg:w-1/2 w-full" data-aos="fade-up">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-[#ffcd60]/20 border border-[#ffcd60]/40 rounded-full px-4 py-1.5 mb-8">
+            <div className="inline-flex items-center gap-2 bg-[#ffcd60]/20 border border-[#ffcd60]/40 rounded-full px-4 py-1.5 mb-6">
               <Shield size={14} className="text-[#ffcd60]" />
               <span className="text-[#ffcd60] text-xs font-bold tracking-wide uppercase">Pakistan's #1 Female Taxi</span>
             </div>
 
-            <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.05] mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.05] mb-5">
               Safe Rides,
               <br />
               <span className="text-[#ffcd60]">Your Way.</span>
             </h1>
 
-            <p className="text-[#e1cfe6]/80 text-lg max-w-md leading-relaxed mb-10">
+            <p className="text-[#e1cfe6]/80 text-base lg:text-lg max-w-md leading-relaxed mb-8">
               Book trusted, verified female drivers in minutes. Travel safely, comfortably, and confidently — every single day.
             </p>
 
@@ -55,7 +55,7 @@ const Hero = () => {
             </div>
 
             {/* Stats Row */}
-            <div className="mt-12 flex gap-8">
+            <div className="mt-10 flex gap-8 pb-2">
               {[
                 { value: '500+', label: 'Female Drivers' },
                 { value: '10K+', label: 'Happy Rides' },
@@ -70,10 +70,10 @@ const Hero = () => {
           </div>
 
           {/* Right — Illustration Card */}
-          <div className="lg:w-1/2 flex justify-center" data-aos="fade-left" data-aos-delay="200">
-            <div className="relative">
+          <div className="lg:w-[55%] w-full flex justify-center" data-aos="fade-left" data-aos-delay="200">
+            <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[580px]">
               {/* Main Image Card */}
-              <div className="w-[340px] h-[420px] lg:w-[420px] lg:h-[520px] rounded-[2.5rem] overflow-hidden border-4 border-white/20 shadow-2xl shadow-black/40">
+              <div className="w-full h-[320px] sm:h-[380px] lg:h-[480px] rounded-[2.5rem] overflow-hidden border-4 border-white/20 shadow-2xl shadow-black/40">
                 <img
                   src="/hero-driver.png"
                   alt="Verified Female Taxi Driver — SHEGO"
