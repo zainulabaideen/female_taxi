@@ -45,7 +45,7 @@ const StatCard = ({ value, suffix, label, decimal, delay }) => {
       data-aos="zoom-in"
       data-aos-delay={delay}
     >
-      <div className="inline-flex flex-col items-center bg-white rounded-3xl px-10 py-8 shadow-lg shadow-[#402763]/8 border border-[#e1cfe6]/60 hover:border-[#402763]/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+      <div className="inline-flex flex-col bg-[#ede0f2] items-center  rounded-3xl px-10 py-8 shadow-lg shadow-[#402763]/8 border border-[#e1cfe6]/60 hover:border-[#402763]/30 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
         <div className="text-5xl font-black text-[#402763] mb-2">
           {decimal ? count.toFixed(1) : count.toLocaleString()}{suffix}
         </div>
@@ -58,7 +58,7 @@ const StatCard = ({ value, suffix, label, decimal, delay }) => {
 
 const Stats = () => {
   return (
-    <section className="py-20 bg-[#e1cfe6]/20">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="text-center mb-14" data-aos="fade-up">
           <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-2">By The Numbers</p>

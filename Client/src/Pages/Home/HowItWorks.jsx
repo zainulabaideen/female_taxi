@@ -34,11 +34,15 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <section className="py-24 bg-[#402763]/5">
+    <section className="py-24 bg-[#ede0f2]">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16" data-aos="fade-up">
-          <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-3">Simple Process</p>
+           <p className="text-[#402763] font-bold uppercase tracking-widest text-sm mb-3 flex items-center justify-center gap-2">
+            <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full" />
+           Simple Process
+            <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full" />
+          </p>
           <h2 className="text-4xl font-black text-[#402763] mb-4">How SHEGO Works</h2>
           <p className="text-[#402763]/60 max-w-xl mx-auto">
             Getting started is quick and easy. You're just four steps away from your first safe ride.
