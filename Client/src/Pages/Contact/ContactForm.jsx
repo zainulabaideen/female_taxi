@@ -40,7 +40,7 @@ const ContactForm = () => {
   }
 
   return (
-    <div className="bg-white rounded-3xl border border-[#e1cfe6]/60 p-8 md:p-10 shadow-lg shadow-[#402763]/5" data-aos="fade-up" data-aos-delay="100">
+    <div className="bg-[#e1cfe6] rounded-3xl border border-[#e1cfe6]/60 p-8 md:p-10 shadow-lg shadow-[#402763]/5" data-aos="fade-up" data-aos-delay="100">
       <h2 className="text-2xl font-black text-[#402763] mb-2">Send Us a Message</h2>
       <p className="text-[#402763]/60 text-sm mb-8">We read every message and respond within 24 hours.</p>
 
@@ -55,7 +55,7 @@ const ContactForm = () => {
               onChange={handleChange}
               required
               placeholder="Your name"
-              className="w-full px-4 py-3 rounded-xl border border-[#e1cfe6] bg-[#e1cfe6]/10 text-[#402763] placeholder-[#402763]/40 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm"
+              className="w-full px-4 py-3.5 rounded-xl border border-[#402763]  bg-white text-[#402763] placeholder-[#402763]/30 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 focus:shadow-lg focus:shadow-[#402763]/20 transition-all duration-200 text-sm"
             />
           </div>
           <div>
@@ -67,7 +67,7 @@ const ContactForm = () => {
               onChange={handleChange}
               required
               placeholder="you@example.com"
-              className="w-full px-4 py-3 rounded-xl border border-[#e1cfe6] bg-[#e1cfe6]/10 text-[#402763] placeholder-[#402763]/40 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm"
+              className="w-full px-4 py-3.5 rounded-xl border border-[#402763]  bg-white text-[#402763] placeholder-[#402763]/30 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 focus:shadow-lg focus:shadow-[#402763]/20 transition-all duration-200 text-sm"
             />
           </div>
         </div>
@@ -81,7 +81,7 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             placeholder="How can we help?"
-            className="w-full px-4 py-3 rounded-xl border border-[#e1cfe6] bg-[#e1cfe6]/10 text-[#402763] placeholder-[#402763]/40 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm"
+            className="w-full px-4 py-3.5 rounded-xl border border-[#402763]  bg-white text-[#402763] placeholder-[#402763]/30 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 focus:shadow-lg focus:shadow-[#402763]/20 transition-all duration-200 text-sm"
           />
         </div>
 
@@ -94,7 +94,7 @@ const ContactForm = () => {
             required
             rows={5}
             placeholder="Tell us more..."
-            className="w-full px-4 py-3 rounded-xl border border-[#e1cfe6] bg-[#e1cfe6]/10 text-[#402763] placeholder-[#402763]/40 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm resize-none"
+            className="w-full px-4 py-3.5 rounded-xl border border-[#402763]  bg-white text-[#402763] placeholder-[#402763]/30 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 focus:shadow-lg focus:shadow-[#402763]/20 transition-all duration-200 text-sm"
           />
         </div>
 

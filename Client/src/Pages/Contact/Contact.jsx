@@ -29,13 +29,13 @@ const Contact = () => {
         </div>
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 50L1440 50L1440 20C1080 50 360 0 0 20L0 50Z" fill="white" />
+            <path d="M0 50L1440 50L1440 20C1080 50 360 0 0 20L0 50Z" fill="#ede0f2" />
           </svg>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#e1cfe6]/30">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
             {/* Left: Info */}

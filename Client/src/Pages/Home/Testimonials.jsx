@@ -45,11 +45,15 @@ const Testimonials = () => {
   const t = testimonials[current];
 
   return (
-    <section className="py-24 bg-[#e1cfe6] overflow-hidden">
+    <section className="py-24 bg-[#ede0f2] overflow-hidden">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16" data-aos="fade-up">
-          <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-2">Testimonials</p>
+          <p className="text-[#402763] font-bold uppercase tracking-widest text-sm mb-2 flex items-center justify-center gap-2">
+            <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full"></span>
+            Testimonials
+            <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full"></span>
+          </p>
           <h2 className="text-4xl font-black text-[#402763]">What Women Are Saying</h2>
         </div>
 
