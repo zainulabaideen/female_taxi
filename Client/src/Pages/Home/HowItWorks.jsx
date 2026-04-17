@@ -34,7 +34,7 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <section className="py-24 bg-[#402763]/5">
+    <section className="py-24 bg-[#e1cfe6]">
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16" data-aos="fade-up">

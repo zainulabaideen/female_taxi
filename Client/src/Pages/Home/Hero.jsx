@@ -23,9 +23,9 @@ const Hero = () => {
           {/* Left Content */}
           <div className="lg:w-1/2" data-aos="fade-up">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-[#ffcd60]/20 border border-[#ffcd60]/40 rounded-full px-4 py-1.5 mb-8">
+            <div className="inline-flex items-center gap-2 mt-2 md:mt-0 bg-[#ffcd60]/20 border border-[#ffcd60]/40 rounded-full px-4 py-1.5 mb-8">
               <Shield size={14} className="text-[#ffcd60]" />
-              <span className="text-[#ffcd60] text-xs font-bold tracking-wide uppercase">Pakistan's #1 Female Taxi</span>
+              <span className="text-[#ffcd60] text-xs font-bold tracking-wide uppercase ">Pakistan's #1 Female Taxi</span>
             </div>
 
             <h1 className="text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.05] mb-6">

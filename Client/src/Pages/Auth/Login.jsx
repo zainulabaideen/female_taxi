@@ -36,9 +36,7 @@ const Login = () => {
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 relative z-10">
-          <div className="w-10 h-10 bg-[#ffcd60] rounded-xl flex items-center justify-center">
-            <Shield size={20} className="text-[#402763]" />
-          </div>
+        <img src="/logo.png" alt="shego" className='w-12 bg-amber-50'/>
           <span className="text-2xl font-black text-white tracking-tight">
             SHE<span className="text-[#ffcd60]">GO</span>
           </span>
@@ -76,13 +74,11 @@ const Login = () => {
       </div>
 
       {/* Right: Login Form */}
-      <div className="flex-1 flex items-center justify-center p-8 bg-white">
+      <div className="flex-1 flex items-center justify-center p-8 bg-[#e1cfe6]">
         <div className="w-full max-w-md">
           {/* Mobile Logo */}
           <Link to="/" className="flex items-center gap-2 mb-8 lg:hidden">
-            <div className="w-8 h-8 bg-[#402763] rounded-lg flex items-center justify-center">
-              <Shield size={16} className="text-[#ffcd60]" />
-            </div>
+          <img src="/logo.png" alt="shego" className='w-12 '/>
             <span className="text-xl font-black text-[#402763]">SHE<span className="text-[#ffcd60]">GO</span></span>
           </Link>
 
@@ -107,7 +103,7 @@ const Login = () => {
                 required
                 autoComplete="email"
                 placeholder="you@example.com"
-                className="w-full px-4 py-3.5 rounded-xl border border-[#e1cfe6] bg-[#e1cfe6]/10 text-[#402763] placeholder-[#402763]/30 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm"
+                className="w-full px-4 py-3.5 rounded-xl border border-[#402763]  bg-white text-[#402763] placeholder-[#402763]/30 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 focus:shadow-lg focus:shadow-[#402763]/20 transition-all duration-200 text-sm"
               />
             </div>
 
@@ -127,7 +123,7 @@ const Login = () => {
                   required
                   autoComplete="current-password"
                   placeholder="••••••••"
-                  className="w-full px-4 py-3.5 pr-12 rounded-xl border border-[#e1cfe6] bg-[#e1cfe6]/10 text-[#402763] placeholder-[#402763]/30 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm"
+                  className="w-full px-4 py-3.5 pr-12 rounded-xl border border-[#402763]  bg-white text-[#402763] placeholder-[#402763]/30 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 focus:shadow-lg focus:shadow-[#402763]/20 transition-all duration-200 text-sm"
                 />
                 <button
                   type="button"

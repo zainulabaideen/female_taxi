@@ -50,7 +50,7 @@ const TeamSection = () => {
               key={i}
               data-aos="fade-up"
               data-aos-delay={i * 100}
-              className="group relative bg-white border border-[#e1cfe6]/60 rounded-3xl p-8 text-center hover:shadow-xl hover:-translate-y-1 hover:border-[#402763]/20 transition-all duration-300"
+              className="group relative bg-[#e1cfe6] border border-[#e1cfe6]/60 rounded-3xl p-8 text-center hover:shadow-xl hover:-translate-y-1 hover:border-[#402763]/20 transition-all duration-300"
             >
               {/* Avatar */}
               <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${member.gradient} flex items-center justify-center mx-auto mb-5 text-white font-black text-xl shadow-lg group-hover:shadow-[#402763]/30 transition-shadow`}>

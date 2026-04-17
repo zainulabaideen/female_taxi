@@ -50,13 +50,11 @@ const SignUp = () => {
   const progressSteps = ['Choose Role', 'Personal Info', role === 'driver' ? 'Driver Setup' : 'Safety Info'];
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#e1cfe6] py-12 px-6">
+    <main className="min-h-screen flex items-center justify-center bg-[#e1cfe6] py-12 px-6">
       <div className="w-full max-w-2xl">
         {/* Logo */}
         <Link to="/" className="flex items-center justify-center gap-2 mb-8">
-          <div className="w-9 h-9 bg-[#402763] rounded-xl flex items-center justify-center">
-            <Shield size={18} className="text-[#ffcd60]" />
-          </div>
+        <img src="/logo.png" alt="shego" className='w-12 '/>
           <span className="text-xl font-black text-[#402763]">SHE<span className="text-[#ffcd60]">GO</span></span>
         </Link>
 
@@ -209,7 +207,7 @@ const SignUp = () => {
               </div>
 
               <div className="flex gap-3 mt-8">
-                <button type="button" onClick={() => setStep(1)} className="flex items-center gap-1 px-5 py-3.5 border-2 border-[#e1cfe6] text-[#402763] font-bold rounded-xl hover:border-[#402763]/30 transition text-sm">
+                <button type="button" onClick={() => setStep(1)} className="flex items-center gap-1 px-5 py-3.5 border-2 bg-[#ffcd60] border-[#e1cfe6] text-[#402763] font-bold rounded-xl hover:border-[#402763]/30 transition text-sm">
                   <ChevronLeft size={16} /> Back
                 </button>
                 <button type="submit" className="flex-1 flex items-center justify-center gap-2 py-3.5 bg-[#402763] text-white font-bold rounded-xl hover:bg-[#402763]/90 transition text-sm shadow-lg shadow-[#402763]/20">
@@ -345,7 +343,7 @@ const SignUp = () => {
               )}
 
               <div className="flex gap-3 mt-8">
-                <button type="button" onClick={() => setStep(2)} className="flex items-center gap-1 px-5 py-3.5 border-2 border-[#e1cfe6] text-[#402763] font-bold rounded-xl hover:border-[#402763]/30 transition text-sm">
+                <button type="button" onClick={() => setStep(2)} className="flex items-center gap-1 px-5 py-3.5 border-2 bg-[#ffcd60] border-[#e1cfe6] text-[#402763] font-bold rounded-xl hover:border-[#402763]/30 transition text-sm">
                   <ChevronLeft size={16} /> Back
                 </button>
                 <button

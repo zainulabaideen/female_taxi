@@ -34,7 +34,7 @@ const values = [
 
 const OurValues = () => {
   return (
-    <section className="py-24 bg-[#e1cfe6]/20">
+    <section className="py-24 bg-[#e1cfe6]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16" data-aos="fade-up">
           <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-3">What Drives Us</p>

@@ -62,7 +62,7 @@ const Features = () => {
                 key={index}
                 data-aos="fade-up"
                 data-aos-delay={index * 80}
-                className="group relative bg-white border border-[#e1cfe6]/60 rounded-3xl p-8 hover:border-[#402763]/20 hover:shadow-xl hover:shadow-[#402763]/8 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+                className="group relative bg-[#e1cfe6] border border-[#e1cfe6]/60 rounded-3xl p-8 hover:border-[#402763]/20 hover:shadow-xl hover:shadow-[#402763]/8 hover:-translate-y-1 transition-all duration-300 overflow-hidden"
               >
                 {/* Background hover fill */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#402763]/3 to-[#e1cfe6]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl" />
