@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, Shield, ArrowRight } from 'lucide-react';
+import { Eye, EyeOff, Shield, ArrowRight,ArrowLeft } from 'lucide-react';
 import { toast } from 'react-toastify';
 
 const Login = () => {
@@ -78,11 +78,15 @@ const Login = () => {
         <div className="w-full max-w-md">
           {/* Mobile Logo */}
           <Link to="/" className="flex items-center gap-2 mb-8 lg:hidden">
-          <img src="/logo.png" alt="shego" className='w-12 '/>
-            <span className="text-xl font-black text-[#402763]">SHE<span className="text-[#ffcd60]">GO</span></span>
+          <img src="/logo.png" alt="shego" className='w-12 mx-auto '/>
+            {/* <span className="text-xl font-black text-[#402763]">SHE<span className="text-[#ffcd60]">GO</span></span> */}
           </Link>
-
+          <div className='flex gap-3'>
+          <Link to="/">
+          <ArrowLeft className="text-[#402763] w-7 h-7 group-hover:-translate-x-1 transition" />
+          </Link>
           <h1 className="text-3xl font-black text-[#402763] mb-2">Sign In</h1>
+          </div>
           <p className="text-[#402763]/60 mb-8">
             Don't have an account?{' '}
             <Link to="/signup" className="text-[#402763] font-bold underline underline-offset-2 hover:text-[#5a3585]">

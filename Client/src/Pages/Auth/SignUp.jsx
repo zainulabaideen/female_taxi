@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, Shield, Car, User, Phone, Mail, Lock, ChevronRight, ChevronLeft, Calendar, MapPin } from 'lucide-react';
+import { Eye, EyeOff, Shield, Car, User, Phone, Mail, Lock, ChevronRight, ChevronLeft, Calendar, MapPin,ArrowLeft } from 'lucide-react';
 import { toast } from 'react-toastify';
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -54,8 +54,8 @@ const SignUp = () => {
       <div className="w-full max-w-2xl">
         {/* Logo */}
         <Link to="/" className="flex items-center justify-center gap-2 mb-8">
-        <img src="/logo.png" alt="shego" className='w-12 '/>
-          <span className="text-xl font-black text-[#402763]">SHE<span className="text-[#ffcd60]">GO</span></span>
+        <img src="/logo.png" alt="shego" className='md:w-18 w-12 '/>
+          {/* <span className="text-xl font-black text-[#402763]">SHE<span className="text-[#ffcd60]">GO</span></span> */}
         </Link>
 
         {/* Progress Bar */}
@@ -84,7 +84,12 @@ const SignUp = () => {
           {/* ── STEP 1: Role Selection ── */}
           {step === 1 && (
             <div>
+            <div className='flex gap-3'>
+            <Link to="/" >
+          <ArrowLeft className="text-[#402763] w-7 h-7 group-hover:-translate-x-1 transition flex" />
+          </Link>
               <h1 className="text-2xl font-black text-[#402763] mb-2">Join SHEGO as...</h1>
+              </div>
               <p className="text-[#402763]/60 text-sm mb-8">Choose your account type to get started.</p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">

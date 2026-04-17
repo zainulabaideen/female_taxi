@@ -68,8 +68,8 @@ const Footer = () => {
               {[
                 { label: 'Book a Ride', to: '/signup' },
                 { label: 'Become a Driver', to: '/signup' },
-                { label: 'Passenger Dashboard', to: '/dashboard/passenger' },
-                { label: 'Driver Dashboard', to: '/dashboard/driver' },
+                { label: 'Passenger Dashboard', to: '/' }, // /dashboard/passenger
+                { label: 'Driver Dashboard', to: '/' }, // /dashboard/driver
                 { label: 'SOS Emergency', to: '/safety' },
                 { label: 'Privacy Policy', to: '#' },
               ].map((link, i) => (
