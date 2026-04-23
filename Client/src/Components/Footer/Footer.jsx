@@ -13,7 +13,7 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-5">
-             <img src="/logo.png" alt="SHEGO Logo" className="w-12 object-contain" />
+             <img src="/logo.png" alt="SHEGO Logo" className="w-18 object-contain" />
             </Link>
             <p className="text-[#402763]/70 text-sm leading-relaxed mb-6">
               Safe, reliable, and empowering rides for women — by women. Your safety is our top priority, every single trip.
@@ -95,7 +95,7 @@ const Footer = () => {
                   <MapPin size={15} className="text-[#402763]" />
                 </div>
                 <span className="text-[#402763]/70 text-sm leading-relaxed">
-                  123 Women's Safety Blvd,<br />Karachi, Pakistan
+                  123 Women's Safety Blvd,<br />Lahore, Pakistan
                 </span>
               </li>
               <li className="flex items-center gap-3">

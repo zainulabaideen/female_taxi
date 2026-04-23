@@ -4,7 +4,7 @@ import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 const testimonials = [
   {
     name: 'Fatima Zahra',
-    role: 'Passenger — Karachi',
+    role: 'Passenger — Lahore',
     rating: 5,
     text: 'SHEGO has completely changed how I commute. I feel safe knowing my driver is a verified woman, and the SOS feature gives my parents peace of mind. Absolutely love this service!',
     avatar: 'FZ',
@@ -20,15 +20,15 @@ const testimonials = [
   },
   {
     name: 'Sara Ahmed',
-    role: 'Passenger — Islamabad',
+    role: 'Passenger — Lahore',
     rating: 5,
-    text: 'I used to avoid late-night rides but now I book SHEGO without any worry. The app is super smooth, drivers are always on time, and the emergency button is a true lifesaver.',
+    text: 'I used to avoid late-night rides but now I book SHEGO without any worry. The app is super smooth, captain are always on time, and the emergency button is a true lifesaver.',
     avatar: 'SA',
     bg: 'from-[#402763] to-[#6b3fa0]',
   },
   {
     name: 'Nadia Khan',
-    role: 'Passenger — Rawalpindi',
+    role: 'Passenger — Lahore',
     rating: 5,
     text: 'The best thing about SHEGO is that I can see the driver\'s schedule before booking. The time slot system is genius! No more waiting around for a ride that never shows.',
     avatar: 'NK',

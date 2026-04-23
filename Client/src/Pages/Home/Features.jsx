@@ -5,12 +5,12 @@ const features = [
   {
     icon: ShieldCheck,
     title: 'Women-Only Rides',
-    desc: 'Only verified female drivers serving female passengers. Safety guaranteed.',
+    desc: 'Only verified female captain serving female passengers. Safety guaranteed.',
   },
   {
     icon: Clock,
     title: '24/7 Availability',
-    desc: 'Book a ride any time of day — our drivers set flexible available schedules.',
+    desc: 'Book a ride any time of day — our captain set flexible available schedules.',
   },
   {
     icon: Wallet,
@@ -19,7 +19,7 @@ const features = [
   },
   {
     icon: Users,
-    title: 'Verified Drivers',
+    title: 'Verified captain',
     desc: 'Every driver goes through a thorough background and license verification.',
   },
   {

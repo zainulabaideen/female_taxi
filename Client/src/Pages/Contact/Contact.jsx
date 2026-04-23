@@ -55,7 +55,7 @@ const Contact = () => {
                 <Mail size={28} className="text-[#ffcd60]" />
               </div>
               <p className="text-[#402763] font-bold">Map integration will be added</p>
-              <p className="text-[#402763]/50 text-sm">Karachi, Pakistan</p>
+              <p className="text-[#402763]/50 text-sm">Lahore, Pakistan</p>
             </div>
           </div>
         </div>

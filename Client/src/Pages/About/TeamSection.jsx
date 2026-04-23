@@ -3,32 +3,25 @@ import { Linkedin, Twitter } from 'lucide-react';
 
 const team = [
   {
-    name: 'Sana Qureshi',
+    name: 'MINAHIL IFTIKHAR',
     role: 'CEO & Co-Founder',
     bio: 'Former safety consultant with 10 years in women\'s rights advocacy.',
-    avatar: 'SQ',
+    avatar: 'MI',
     gradient: 'from-[#402763] to-[#5a3585]',
   },
   {
-    name: 'Amna Riaz',
+    name: 'SUMMAN NAZ',
     role: 'CTO & Co-Founder',
     bio: 'Full-stack engineer who built the SOS emergency system from scratch.',
-    avatar: 'AR',
+    avatar: 'SN',
     gradient: 'from-[#5a3585] to-[#7c4ab8]',
   },
   {
-    name: 'Hina Fatima',
+    name: 'NOOR AKHTAR',
     role: 'Head of Operations',
     bio: 'Oversees driver onboarding and quality assurance across all cities.',
-    avatar: 'HF',
+    avatar: 'NA',
     gradient: 'from-[#7c4ab8] to-[#402763]',
-  },
-  {
-    name: 'Zara Mahmood',
-    role: 'Head of Safety',
-    bio: 'Designed SHEGO\'s verification process and emergency response protocol.',
-    avatar: 'ZM',
-    gradient: 'from-[#402763] to-[#4a2f7a]',
   },
 ];
 
@@ -38,13 +31,13 @@ const TeamSection = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16" data-aos="fade-up">
           <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-3">The Team</p>
-          <h2 className="text-4xl font-black text-[#402763] mb-4">Women Building for Women</h2>
+          <h2 className="text-4xl font-black text-[#402763] mb-4">Powered by Women, Driven by Women</h2>
           <p className="text-[#402763]/60 max-w-xl mx-auto">
             Our leadership team is made up of passionate women who understand the challenges firsthand.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {team.map((member, i) => (
             <div
               key={i}
@@ -57,8 +50,8 @@ const TeamSection = () => {
                 {member.avatar}
               </div>
 
-              <h3 className="font-bold text-[#402763] text-lg mb-1">{member.name}</h3>
-              <div className="text-[#ffcd60] text-xs font-bold uppercase tracking-wide mb-3">{member.role}</div>
+              <h3 className="font-bold text-[#402763]/60 text-lg mb-1">{member.name}</h3>
+              <div className="text-[#402763] text-xs font-bold uppercase tracking-wide mb-3">{member.role}</div>
               <p className="text-[#402763]/60 text-sm leading-relaxed mb-5">{member.bio}</p>
 
               {/* Social Links */}

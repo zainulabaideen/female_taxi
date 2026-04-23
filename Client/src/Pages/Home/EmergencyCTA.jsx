@@ -48,18 +48,26 @@ const EmergencyCTA = () => {
             </p>
 
             <ul className="space-y-3 mb-8 text-left max-w-md mx-auto lg:mx-0">
-              {[
-                '📍 Real-time GPS location sharing',
-                '📧 Instant email alert to parents/guardians',
-                '💬 WhatsApp message with live map link',
-                '🔁 Auto-repeats every 5 minutes while active',
-                '🛑 Stop anytime with a single tap',
-              ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-[#e1cfe6]/80 text-sm">
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+  {[
+    { icon: '📍', text: 'Real-time GPS location sharing' },
+    { icon: '📧', text: 'Instant email alert to parents/guardians' },
+    { icon: '💬', text: 'WhatsApp message with live map link' },
+    { icon: '🔁', text: 'Auto-repeats every 5 minutes while active' },
+    { icon: '🛑', text: 'Stop anytime with a single tap' },
+  ].map((item, i) => (
+    <li key={i} className="flex items-center gap-3 text-[#e1cfe6]/80 text-sm">
+      
+      {/* Icon with background */}
+      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-600/20">
+        {item.icon}
+      </span>
+
+      {/* Text */}
+      <span>{item.text}</span>
+      
+    </li>
+  ))}
+</ul>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Link

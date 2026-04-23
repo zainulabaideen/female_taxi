@@ -52,7 +52,7 @@ const AdminCreateJob = () => {
             </div>
             <div>
               <label className="block mb-2 font-medium">Location</label>
-              <input name="location" type="text" className="input" placeholder="e.g. Islamabad, Pakistan" />
+              <input name="location" type="text" className="input" placeholder="e.g. Lahore, Pakistan" />
             </div>
           </div>
 

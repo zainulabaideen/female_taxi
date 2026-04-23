@@ -5,20 +5,20 @@ const info = [
   {
     icon: MapPin,
     title: 'Our Office',
-    lines: ['123 Women\'s Safety Blvd', 'Karachi, Pakistan'],
+    lines: ['123 Women\'s Safety Blvd', 'Lahore, Pakistan'],
     color: 'bg-[#402763] text-white',
   },
   {
     icon: Phone,
     title: 'Call Us',
     lines: ['+92 123 456 7890', '+92 321 654 0987'],
-    color: 'bg-[#ffcd60] text-[#402763]',
+    color: 'bg-[#402763] text-white',
   },
   {
     icon: Mail,
     title: 'Email Us',
-    lines: ['support@shego.pk', 'drivers@shego.pk'],
-    color: 'bg-[#e1cfe6] text-[#402763]',
+    lines: ['support@shego.pk', 'captain@shego.pk'],
+    color: 'bg-[#402763] text-white',
   },
   {
     icon: Clock,

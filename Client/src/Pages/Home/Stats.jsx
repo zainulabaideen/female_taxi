@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const stats = [
-  { value: 500, suffix: '+', label: 'Female Drivers' },
+  { value: 500, suffix: '+', label: 'Female captain' },
   { value: 10000, suffix: '+', label: 'Happy Rides' },
   { value: 4.9, suffix: '★', label: 'Average Rating', decimal: true },
   { value: 100, suffix: '%', label: 'Women Only' },

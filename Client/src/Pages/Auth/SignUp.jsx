@@ -111,7 +111,7 @@ const SignUp = () => {
                     <User size={24} />
                   </div>
                   <h3 className="font-black text-[#402763] text-lg mb-2">Passenger</h3>
-                  <p className="text-[#402763]/60 text-sm">Book rides from verified female drivers. Set emergency contacts for added safety.</p>
+                  <p className="text-[#402763]/60 text-sm">Book rides from verified female captain. Set emergency contacts for added safety.</p>
                 </button>
 
                 {/* Driver Card */}
@@ -278,7 +278,7 @@ const SignUp = () => {
                     <label className="block text-sm font-semibold text-[#402763] mb-2">Current City / Location</label>
                     <div className="relative">
                       <MapPin size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#402763]/40" />
-                      <input type="text" name="location" value={form.location} onChange={handleChange} required placeholder="e.g. Karachi, DHA Phase 5"
+                      <input type="text" name="location" value={form.location} onChange={handleChange} required placeholder="e.g. Lahore, DHA Phase 5"
                         className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-[#e1cfe6] bg-[#e1cfe6]/10 text-[#402763] placeholder-[#402763]/30 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm" />
                     </div>
                   </div>

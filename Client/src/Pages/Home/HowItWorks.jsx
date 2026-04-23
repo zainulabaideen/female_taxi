@@ -11,8 +11,8 @@ const steps = [
   },
   {
     icon: Search,
-    title: 'Find Available Drivers',
-    desc: 'Browse our verified female drivers, see their location, ratings, and schedules.',
+    title: 'Find Available captain',
+    desc: 'Browse our verified female captain, see their location, ratings, and schedules.',
     step: '02',
     color: 'from-[#5a3585] to-[#7c4ab8]',
   },

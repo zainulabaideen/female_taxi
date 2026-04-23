@@ -37,7 +37,7 @@ const PassengerHome = () => {
           <div>
             <Car size={28} className="text-[#ffcd60] mb-3" />
             <div className="font-black text-lg">Book a Ride</div>
-            <div className="text-[#e1cfe6]/70 text-sm">Find available female drivers near you</div>
+            <div className="text-[#e1cfe6]/70 text-sm">Find available female captain near you</div>
           </div>
           <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform text-[#ffcd60]" />
         </Link>

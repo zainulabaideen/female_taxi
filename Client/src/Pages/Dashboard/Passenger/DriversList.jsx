@@ -4,7 +4,7 @@ import { MapPin, Star, Clock, Car, ChevronRight, X } from 'lucide-react';
 const mockDrivers = [
   {
     id: 1, name: 'Sana Qureshi', rating: 4.9, rides: 234, car: 'Toyota Corolla', year: 2021,
-    location: 'DHA Phase 5, Karachi',
+    location: 'DHA Phase 5, Lahore',
     availableDays: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
     slots: [
       { id: 1, time: '09:00 – 10:00', booked: false },
@@ -18,7 +18,7 @@ const mockDrivers = [
   },
   {
     id: 2, name: 'Amna Riaz', rating: 5.0, rides: 412, car: 'Honda City', year: 2022,
-    location: 'Gulshan-e-Iqbal, Karachi',
+    location: 'Gulshan-e-Iqbal, Lahore',
     availableDays: ['Mon', 'Wed', 'Fri', 'Sat'],
     slots: [
       { id: 1, time: '08:00 – 09:00', booked: false },
@@ -30,7 +30,7 @@ const mockDrivers = [
   },
   {
     id: 3, name: 'Hina Fatima', rating: 4.8, rides: 178, car: 'Suzuki Alto', year: 2020,
-    location: 'North Nazimabad, Karachi',
+    location: 'North Nazimabad, Lahore',
     availableDays: ['Tue', 'Thu', 'Sat', 'Sun'],
     slots: [
       { id: 1, time: '10:00 – 11:00', booked: false },
@@ -110,7 +110,7 @@ const DriversList = () => {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-black text-[#402763] mb-1">Find Your Driver 🚗</h1>
-        <p className="text-[#402763]/60 text-sm">Browse verified female drivers near you and book a time slot.</p>
+        <p className="text-[#402763]/60 text-sm">Browse verified female captain near you and book a time slot.</p>
       </div>
 
       {/* Search */}
@@ -182,7 +182,7 @@ const DriversList = () => {
       {filtered.length === 0 && (
         <div className="text-center py-16 text-[#402763]/40">
           <MapPin size={40} className="mx-auto mb-3" />
-          <p className="font-bold">No drivers found</p>
+          <p className="font-bold">No captain found</p>
           <p className="text-sm">Try a different search</p>
         </div>
       )}

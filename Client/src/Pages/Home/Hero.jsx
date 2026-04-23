@@ -4,7 +4,7 @@ import { Shield, ChevronRight, MapPin } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="relative  flex items-center  overflow-hidden bg-gradient-to-br from-[#402763] via-[#5a3585] to-[#402763]">
+    <section className="relative md:h-screen flex items-center  overflow-hidden bg-gradient-to-br from-[#402763] via-[#5a3585] to-[#402763]">
       {/* Decorative Blobs */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#ffcd60]/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#e1cfe6]/10 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3 pointer-events-none" />
@@ -25,17 +25,17 @@ const Hero = () => {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-[#ffcd60]/20 border border-[#ffcd60]/40 rounded-full px-4 py-1.5 mb-6">
               <Shield size={14} className="text-[#ffcd60]" />
-              <span className="text-[#ffcd60] text-xs font-bold tracking-wide uppercase ">Pakistan's #1 Female Taxi</span>
+              <span className="text-[#ffcd60] text-xs font-bold tracking-wide uppercase ">Pakistan's #1 Female Ride</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.05] mb-5">
-              Safe Rides,
+            SHE MOVES,
               <br />
-              <span className="text-[#ffcd60]">Your Way.</span>
+              <span className="text-[#ffcd60]">THE CITY.</span>
             </h1>
 
             <p className="text-[#e1cfe6]/80 text-base lg:text-lg max-w-md leading-relaxed mb-8">
-              Book trusted, verified female drivers in minutes. Travel safely, comfortably, and confidently — every single day.
+              Book trusted, verified female captain in minutes. Travel safely, comfortably, and confidently — every single day.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -57,7 +57,7 @@ const Hero = () => {
             {/* Stats Row */}
             <div className="mt-10 flex gap-8 pb-2">
               {[
-                { value: '500+', label: 'Female Drivers' },
+                { value: '500+', label: 'Female captain' },
                 { value: '10K+', label: 'Happy Rides' },
                 { value: '4.9★', label: 'Average Rating' },
               ].map((stat, i) => (
@@ -76,7 +76,7 @@ const Hero = () => {
               <div className="w-full h-[320px] sm:h-[380px] lg:h-[480px] rounded-[2.5rem] overflow-hidden border-4 border-white/20 shadow-2xl shadow-black/40">
                 <img
                   src="/hero-driver.png"
-                  alt="Verified Female Taxi Driver — SHEGO"
+                  alt="Verified Female Ride Driver — SHEGO"
                   className="w-full h-full object-cover object-top"
                 />
                 {/* Overlay gradient */}
@@ -90,7 +90,7 @@ const Hero = () => {
                 </div>
                 <div>
                   <div className="text-xs font-black text-[#402763]">100% Safe</div>
-                  <div className="text-xs text-gray-400">Verified Drivers</div>
+                  <div className="text-xs text-gray-400">Verified captain</div>
                 </div>
               </div>
 

@@ -4,7 +4,7 @@ import { LayoutDashboard, Car, Clock, User, LogOut, Menu, Shield, AlertTriangle 
 
 const navItems = [
   { label: 'Overview', to: '/dashboard/passenger', icon: LayoutDashboard },
-  { label: 'Find Drivers', to: '/dashboard/passenger/drivers', icon: Car },
+  { label: 'Find captain', to: '/dashboard/passenger/drivers', icon: Car },
   { label: 'My Bookings', to: '/dashboard/passenger/bookings', icon: Clock },
   { label: 'Emergency SOS', to: '/dashboard/passenger/emergency', icon: AlertTriangle },
   { label: 'My Profile', to: '/dashboard/passenger/profile', icon: User },

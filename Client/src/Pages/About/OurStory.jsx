@@ -4,7 +4,7 @@ import { CheckCircle2 } from 'lucide-react';
 const OurStory = () => {
   const highlights = [
     'Founded by a team of women who experienced safety gaps firsthand',
-    'All drivers undergo strict background checks and license verification',
+    'All captain undergo strict background checks and license verification',
     'Built-in SOS emergency system with real-time location sharing',
     'Serving thousands of women across major Pakistani cities',
   ];
@@ -34,14 +34,14 @@ const OurStory = () => {
           <div className="lg:w-1/2" data-aos="fade-left" data-aos-delay="100">
             <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-3">Our Story</p>
             <h2 className="text-4xl font-black text-[#402763] mb-6 leading-tight">
-              Born from a Need
-              <br />for Safer Streets
+            HER JOURNEY 
+              <br />ON HER OWN TERMS
             </h2>
             <p className="text-[#402763]/70 leading-relaxed mb-5">
               SHEGO was founded when our team realized that women across Pakistan faced daily challenges while commuting — from harassment to feeling unsafe in late hours.
             </p>
             <p className="text-[#402763]/70 leading-relaxed mb-8">
-              We created a platform where <strong className="text-[#402763]">verified female drivers</strong> serve female passengers exclusively. Combined with our <strong className="text-[#402763]">SOS emergency system</strong>, we ensure your family is always in the loop when it matters most.
+              We created a platform where <strong className="text-[#402763]">verified female captain</strong> serve female passengers exclusively. Combined with our <strong className="text-[#402763]">SOS emergency system</strong>, we ensure your family is always in the loop when it matters most.
             </p>
 
             {/* Highlights */}
@@ -57,7 +57,7 @@ const OurStory = () => {
             {/* Stats */}
             <div className="mt-10 grid grid-cols-3 gap-6 pt-8 border-t border-[#e1cfe6]/60">
               {[
-                { value: '500+', label: 'Drivers' },
+                { value: '500+', label: 'captain' },
                 { value: '10K+', label: 'Trips' },
                 { value: '5★', label: 'Avg Rating' },
               ].map((s, i) => (

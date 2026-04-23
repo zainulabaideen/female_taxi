@@ -36,9 +36,9 @@ const Login = () => {
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 relative z-10">
-        <img src="/logo.png" alt="shego" className='w-12 bg-amber-50'/>
-          <span className="text-2xl font-black text-white tracking-tight">
-            SHE<span className="text-[#ffcd60]">GO</span>
+        <img src="/logo colors/logo colors/SheGo Colored Logo-01-09.png" alt="shego" className='w-16 '/>
+          <span className="text-4xl font-black text-[#ffcd60] tracking-tight">
+            SHEGO
           </span>
         </Link>
 
@@ -69,7 +69,7 @@ const Login = () => {
           <p className="text-[#e1cfe6]/80 text-sm italic">
             "SHEGO made me feel safe for the first time commuting alone. The SOS feature is a game-changer!"
           </p>
-          <p className="text-[#ffcd60] text-xs font-bold mt-2">— Ayesha R., Karachi</p>
+          <p className="text-[#ffcd60] text-xs font-bold mt-2">— Ayesha R., Lahore</p>
         </div>
       </div>
 
@@ -78,7 +78,7 @@ const Login = () => {
         <div className="w-full max-w-md">
           {/* Mobile Logo */}
           <Link to="/" className="flex items-center gap-2 mb-8 lg:hidden">
-          <img src="/logo.png" alt="shego" className='w-12 mx-auto '/>
+          <img src="/logo.png" alt="shego" className='w-18 mx-auto '/>
             {/* <span className="text-xl font-black text-[#402763]">SHE<span className="text-[#ffcd60]">GO</span></span> */}
           </Link>
           <div className='flex gap-3'>

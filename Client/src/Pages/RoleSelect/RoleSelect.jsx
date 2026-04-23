@@ -26,7 +26,7 @@ const RoleSelect = () => {
             </div>
             <div>
               <div className="font-black text-[#402763] text-lg">Passenger</div>
-              <div className="text-[#402763]/60 text-sm mt-1">Find drivers, book rides, manage emergency contacts</div>
+              <div className="text-[#402763]/60 text-sm mt-1">Find captain, book rides, manage emergency contacts</div>
             </div>
           </Link>
 
