@@ -19,7 +19,7 @@ const team = [
   {
     name: 'NOOR AKHTAR',
     role: 'Head of Operations',
-    bio: 'Oversees driver onboarding and quality assurance across all cities.',
+    bio: 'Oversees caption onboarding and quality assurance across all cities.',
     avatar: 'NA',
     gradient: 'from-[#7c4ab8] to-[#402763]',
   },

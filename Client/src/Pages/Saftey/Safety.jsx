@@ -16,7 +16,7 @@ const Safety = () => {
     {
       icon: <ShieldCheck className="text-primary" size={32} />,
       title: "Verified Community",
-      desc: "Every driver and passenger is identity-verified to ensure a community of trust and security."
+      desc: "Every caption and passenger is identity-verified to ensure a community of trust and security."
     }
   ];
 

@@ -50,7 +50,7 @@ const Hero = () => {
                 to="/signup"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 text-white font-bold text-base rounded-2xl hover:bg-white/20 border border-white/20 transition-all duration-300 backdrop-blur-sm"
               >
-                Become a Driver
+                Become a Caption
               </Link>
             </div>
 

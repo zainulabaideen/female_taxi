@@ -25,7 +25,7 @@ const Contact = () => {
             <span className="text-[#ffcd60] text-xs font-bold tracking-widest uppercase">Contact Us</span>
           </div>
           <h1 className="text-5xl font-black text-white mb-4">Say Hello to <span className="text-[#ffcd60]">SHEGO</span></h1>
-          <p className="text-[#e1cfe6]/70 text-lg max-w-lg mx-auto">Whether you're a passenger, driver, or just curious — we'd love to hear from you.</p>
+          <p className="text-[#e1cfe6]/70 text-lg max-w-lg mx-auto">Whether you're a passenger, caption, or just curious — we'd love to hear from you.</p>
         </div>
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg">

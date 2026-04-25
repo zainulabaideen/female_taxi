@@ -67,9 +67,9 @@ const Footer = () => {
             <ul className="space-y-3">
               {[
                 { label: 'Book a Ride', to: '/signup' },
-                { label: 'Become a Driver', to: '/signup' },
+                { label: 'Become a Caption', to: '/signup' },
                 { label: 'Passenger Dashboard', to: '/' }, // /dashboard/passenger
-                { label: 'Driver Dashboard', to: '/' }, // /dashboard/driver
+                { label: 'Caption Dashboard', to: '/' }, // /dashboard/driver
                 { label: 'SOS Emergency', to: '/safety' },
                 { label: 'Privacy Policy', to: '#' },
               ].map((link, i) => (

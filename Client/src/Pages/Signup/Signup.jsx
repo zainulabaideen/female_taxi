@@ -44,7 +44,7 @@ const Signup = () => {
                   className="p-8 border-2 border-secondary rounded-3xl hover:border-accent hover:bg-accent/5 transition-all text-center group"
                 >
                   <CarFront size={48} className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" />
-                  <span className="block font-bold text-lg text-primary">As a Driver</span>
+                  <span className="block font-bold text-lg text-primary">As a Caption</span>
                   <p className="text-sm text-gray-500 mt-2">I want to earn by driving.</p>
                 </button>
               </div>

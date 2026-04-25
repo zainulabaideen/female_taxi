@@ -5,7 +5,7 @@ const steps = [
   {
     icon: UserPlus,
     title: 'Create Your Account',
-    desc: 'Sign up as a Passenger or Driver. Fill in your details and get verified in minutes.',
+    desc: 'Sign up as a Passenger or Caption. Fill in your details and get verified in minutes.',
     step: '01',
     color: 'from-[#402763] to-[#5a3585]',
   },
@@ -19,7 +19,7 @@ const steps = [
   {
     icon: CalendarCheck,
     title: 'Book a Time Slot',
-    desc: 'Select an available time slot from your chosen driver. Booked slots are automatically hidden.',
+    desc: 'Select an available time slot from your chosen caption. Booked slots are automatically hidden.',
     step: '03',
     color: 'from-[#7c4ab8] to-[#402763]',
   },
