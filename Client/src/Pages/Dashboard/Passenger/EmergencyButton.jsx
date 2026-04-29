@@ -1,194 +1,325 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { AlertTriangle, MapPin, Phone, Mail, MessageCircle, CheckCircle2, XCircle, Shield } from 'lucide-react';
-import { toast } from 'react-toastify';
-
-const INTERVAL_SECONDS = 300; // 5 minutes
+import React, { useState, useEffect, useRef } from "react";
+import {
+  AlertTriangle,
+  MapPin,
+  Phone,
+  Clock,
+  CheckCircle,
+  Loader,
+} from "lucide-react";
+import { toast } from "react-toastify";
+import { reportAPI, bookingAPI } from "../../../services/api";
+import { useAuth } from "../../../context/AuthContext";
 
 const EmergencyButton = () => {
-  const [active, setActive] = useState(false);
+  const { user } = useAuth();
+  const [triggered, setTriggered] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [countdown, setCountdown] = useState(0);
   const [location, setLocation] = useState(null);
-  const [locationError, setLocationError] = useState(null);
-  const [countdown, setCountdown] = useState(INTERVAL_SECONDS);
+  const [gettingLocation, setGettingLocation] = useState(false);
+  const [activeBooking, setActiveBooking] = useState(null);
+  const [sosHistory, setSosHistory] = useState([]);
+  const [loadingHistory, setLoadingHistory] = useState(true);
   const intervalRef = useRef(null);
-  const countdownRef = useRef(null);
 
+  // Load active booking and SOS history
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const [bookingsRes, sosRes] = await Promise.all([
+          bookingAPI.getMyBookings(),
+          reportAPI.getMySOS(),
+        ]);
+        const active = bookingsRes.data.find((b) => b.status === "in_progress");
+        setActiveBooking(active || null);
+        setSosHistory(sosRes.data);
+      } catch (err) {
+        console.error("SOS load error:", err);
+      } finally {
+        setLoadingHistory(false);
+      }
+    };
+    load();
+  }, []);
+
+  // Get current GPS location
   const getLocation = () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
+      setGettingLocation(true);
       if (!navigator.geolocation) {
-        reject('Geolocation not supported');
+        resolve(null);
+        setGettingLocation(false);
         return;
       }
       navigator.geolocation.getCurrentPosition(
-        (pos) => resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude }),
-        (err) => reject(err.message)
+        (pos) => {
+          const loc = {
+            latitude: pos.coords.latitude,
+            longitude: pos.coords.longitude,
+            address: `${pos.coords.latitude.toFixed(6)}, ${pos.coords.longitude.toFixed(6)}`,
+          };
+          setLocation(loc);
+          setGettingLocation(false);
+          resolve(loc);
+        },
+        () => {
+          setGettingLocation(false);
+          resolve(null);
+        },
+        { timeout: 5000 },
       );
     });
   };
 
-  const sendAlert = useCallback(async () => {
+  const triggerSOS = async () => {
+    if (!activeBooking) {
+      toast.error("SOS can only be triggered during an active ride");
+      return;
+    }
+
+    setLoading(true);
     try {
       const loc = await getLocation();
-      setLocation(loc);
-      const mapsUrl = `https://maps.google.com/?q=${loc.lat},${loc.lng}`;
-      // In production: send email + WhatsApp via backend API
-      console.log('[SOS] Location shared:', loc, 'Maps:', mapsUrl);
-      toast.error(`🚨 SOS Alert Sent! Location: ${loc.lat.toFixed(4)}, ${loc.lng.toFixed(4)}`, { autoClose: 5000 });
-    } catch (err) {
-      setLocationError(String(err));
-      toast.warning('⚠️ Could not get location. Alert sent without GPS.');
-    }
-  }, []);
-
-  const startEmergency = async () => {
-    setActive(true);
-    setCountdown(INTERVAL_SECONDS);
-    await sendAlert();
-    // Auto-resend every 5 minutes
-    intervalRef.current = setInterval(() => {
-      sendAlert();
-      setCountdown(INTERVAL_SECONDS);
-    }, INTERVAL_SECONDS * 1000);
-    // Countdown timer
-    countdownRef.current = setInterval(() => {
-      setCountdown((c) => {
-        if (c <= 1) return INTERVAL_SECONDS;
-        return c - 1;
+      await reportAPI.triggerSOS({
+        booking_id: activeBooking.id,
+        latitude: loc?.latitude,
+        longitude: loc?.longitude,
+        address: loc?.address || "Location unavailable",
       });
-    }, 1000);
+
+      setTriggered(true);
+      // Start countdown for 5 min display
+      setCountdown(300);
+      intervalRef.current = setInterval(() => {
+        setCountdown((p) => {
+          if (p <= 1) {
+            clearInterval(intervalRef.current);
+            return 0;
+          }
+          return p - 1;
+        });
+      }, 1000);
+
+      // Refresh SOS history
+      const res = await reportAPI.getMySOS();
+      setSosHistory(res.data);
+
+      toast.success(
+        "SOS Alert sent! Emergency contacts and admin have been notified. 🚨",
+      );
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to send SOS");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const stopEmergency = () => {
-    setActive(false);
-    clearInterval(intervalRef.current);
-    clearInterval(countdownRef.current);
-    toast.success('Emergency mode stopped. Stay safe! 💜');
-  };
+  useEffect(() => () => clearInterval(intervalRef.current), []);
 
-  useEffect(() => {
-    return () => {
-      clearInterval(intervalRef.current);
-      clearInterval(countdownRef.current);
-    };
-  }, []);
-
-  const formatTime = (secs) => {
-    const m = Math.floor(secs / 60).toString().padStart(2, '0');
-    const s = (secs % 60).toString().padStart(2, '0');
-    return `${m}:${s}`;
-  };
+  const formatTime = (s) =>
+    `${Math.floor(s / 60)
+      .toString()
+      .padStart(2, "0")}:${(s % 60).toString().padStart(2, "0")}`;
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
+    <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-black text-[#402763] mb-1 flex items-center gap-2">
-          <AlertTriangle className="text-red-500" size={26} />
-          Emergency SOS
+        <h1 className="text-2xl font-black text-[#402763] mb-1">
+          SOS Emergency
         </h1>
-        <p className="text-[#402763]/60 text-sm">Press the SOS button if you feel unsafe. Your live location will be shared with your emergency contacts.</p>
+        <p className="text-[#402763]/60 text-sm">
+          Use this only during an active ride if you feel unsafe.
+        </p>
       </div>
 
-      {/* Main SOS Panel */}
-      <div className={`rounded-3xl p-8 border-2 transition-all duration-500 text-center ${active ? 'bg-red-50 border-red-400 shadow-xl shadow-red-500/20' : 'bg-white border-[#e1cfe6] shadow-lg shadow-[#402763]/5'}`}>
-
-        {/* Pulsing Button */}
-        <div className="flex justify-center mb-8">
-          <div className={`relative ${active ? 'animate-pulse' : ''}`}>
-            {active && (
-              <>
-                <div className="absolute inset-0 rounded-full bg-red-400/30 scale-150 animate-ping" />
-                <div className="absolute inset-0 rounded-full bg-red-400/20 scale-125 animate-ping" style={{ animationDelay: '0.3s' }} />
-              </>
-            )}
-            <button
-              onClick={active ? stopEmergency : startEmergency}
-              className={`relative w-44 h-44 rounded-full flex flex-col items-center justify-center font-black text-white transition-all duration-300 shadow-2xl ${
-                active
-                  ? 'bg-red-500 hover:bg-red-600 shadow-red-500/50 scale-95'
-                  : 'bg-[#402763] hover:bg-red-500 hover:scale-105 shadow-[#402763]/30'
-              }`}
-            >
-              <AlertTriangle size={32} className="mb-2" />
-              <span className="text-2xl tracking-widest">SOS</span>
-              <span className="text-xs font-medium opacity-80 mt-1">{active ? 'Tap to STOP' : 'Tap to START'}</span>
-            </button>
+      {/* Active Ride Status */}
+      {activeBooking ? (
+        <div className="bg-green-50 border border-green-200 rounded-2xl p-5 flex items-center gap-3">
+          <CheckCircle size={20} className="text-green-600 flex-shrink-0" />
+          <div>
+            <p className="font-bold text-green-800">Active Ride Detected</p>
+            <p className="text-sm text-green-600">
+              With {activeBooking.driver_name} · {activeBooking.day_of_week}{" "}
+              {activeBooking.from_time}–{activeBooking.to_time}
+            </p>
           </div>
         </div>
+      ) : (
+        <div className="bg-gray-50 border border-gray-200 rounded-2xl p-5 flex items-center gap-3">
+          <AlertTriangle size={20} className="text-gray-400 flex-shrink-0" />
+          <div>
+            <p className="font-bold text-gray-600">No Active Ride</p>
+            <p className="text-sm text-gray-400">
+              SOS can only be triggered when your ride is in progress.
+            </p>
+          </div>
+        </div>
+      )}
 
-        {/* Status */}
-        {active ? (
-          <div className="space-y-4">
-            <div className="flex items-center justify-center gap-2 text-red-600 font-bold">
-              <div className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
-              Emergency Mode ACTIVE
-            </div>
-            <div className="bg-red-100 rounded-2xl p-5 max-w-sm mx-auto">
-              <div className="text-sm text-red-700 font-semibold mb-1">Next alert in:</div>
-              <div className="text-4xl font-black text-red-600 font-mono">{formatTime(countdown)}</div>
-              <div className="text-xs text-red-500 mt-2">Your location is being shared every 5 minutes</div>
-            </div>
-            {location && (
-              <div className="flex items-center justify-center gap-2 text-sm text-[#402763]/70">
-                <MapPin size={14} className="text-red-500" />
-                <span className="font-mono">{location.lat.toFixed(6)}, {location.lng.toFixed(6)}</span>
-              </div>
-            )}
-            <button onClick={stopEmergency}
-              className="mt-2 px-8 py-3 bg-[#402763] text-white font-bold rounded-xl hover:bg-[#402763]/90 transition flex items-center gap-2 mx-auto">
-              <XCircle size={18} /> Stop Emergency
+      {/* Main SOS Button */}
+      <div className="flex flex-col items-center justify-center py-10">
+        {!triggered ? (
+          <div className="text-center">
+            <p className="text-[#402763]/60 text-sm mb-8 max-w-xs mx-auto">
+              Press and hold the button below if you feel unsafe. Your live
+              location and emergency contacts will be notified immediately.
+            </p>
+            <button
+              onClick={triggerSOS}
+              disabled={loading || !activeBooking}
+              className={`relative w-52 h-52 rounded-full font-black text-white text-lg shadow-2xl transition-all duration-300 flex flex-col items-center justify-center gap-2 ${
+                activeBooking
+                  ? "bg-red-500 hover:bg-red-600 hover:scale-105 shadow-red-200 active:scale-95 cursor-pointer"
+                  : "bg-gray-300 cursor-not-allowed"
+              }`}
+            >
+              {loading ? (
+                <Loader size={40} className="animate-spin" />
+              ) : (
+                <>
+                  <AlertTriangle size={48} />
+                  <span>SOS</span>
+                  <span className="text-xs font-normal opacity-80">
+                    Emergency Alert
+                  </span>
+                </>
+              )}
+              {activeBooking && !loading && (
+                <div className="absolute inset-0 rounded-full border-4 border-red-300 animate-ping opacity-30" />
+              )}
             </button>
+
+            {gettingLocation && (
+              <p className="mt-4 text-sm text-[#402763]/60 flex items-center gap-2 justify-center">
+                <Loader size={14} className="animate-spin" /> Getting your
+                location...
+              </p>
+            )}
           </div>
         ) : (
-          <div className="space-y-3">
-            <div className="flex items-center justify-center gap-2 text-[#402763]/60 font-semibold text-sm">
-              <Shield size={16} className="text-green-500" />
-              Emergency Mode Inactive — You're Safe
+          <div className="text-center space-y-6 max-w-sm mx-auto">
+            <div className="w-24 h-24 bg-red-100 rounded-full flex items-center justify-center mx-auto">
+              <AlertTriangle size={40} className="text-red-500" />
             </div>
-            <p className="text-xs text-[#402763]/40 max-w-xs mx-auto">Press the red button above if you feel unsafe. Your emergency contacts will be notified immediately.</p>
+            <div>
+              <h2 className="text-2xl font-black text-red-600 mb-2">
+                SOS ACTIVE! 🚨
+              </h2>
+              <p className="text-[#402763]/70 text-sm">
+                Your emergency contacts and admin have been notified with your
+                location.
+              </p>
+            </div>
+
+            {location && (
+              <div className="bg-red-50 border border-red-200 rounded-2xl p-4">
+                <div className="flex items-center gap-2 text-red-600 font-semibold text-sm mb-2">
+                  <MapPin size={16} /> Your Location Shared
+                </div>
+                <a
+                  href={`https://maps.google.com/?q=${location.latitude},${location.longitude}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-xs text-blue-600 underline"
+                >
+                  {location.latitude.toFixed(6)},{" "}
+                  {location.longitude.toFixed(6)} — View on Map
+                </a>
+              </div>
+            )}
+
+            {countdown > 0 && (
+              <div className="flex items-center gap-2 justify-center text-sm text-[#402763]/60">
+                <Clock size={14} /> Alert active for {formatTime(countdown)}
+              </div>
+            )}
+
+            <button
+              onClick={() => {
+                setTriggered(false);
+                setCountdown(0);
+                setLocation(null);
+              }}
+              className="px-8 py-3 border border-[#e1cfe6] text-[#402763] rounded-xl font-semibold text-sm hover:bg-gray-50 transition"
+            >
+              I'm Safe Now
+            </button>
           </div>
         )}
       </div>
 
-      {/* Info Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      {/* Emergency Info */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {[
-          { icon: MapPin, title: 'Live GPS Location', desc: 'Precise location sent with every alert via Google Maps link.', color: 'text-red-500 bg-red-100' },
-          { icon: Mail, title: 'Email Notification', desc: 'Alert email sent to your emergency contact immediately.', color: 'text-blue-500 bg-blue-100' },
-          { icon: MessageCircle, title: 'WhatsApp Alert', desc: 'WhatsApp message with location link sent to your contact.', color: 'text-green-500 bg-green-100' },
-        ].map((card, i) => {
-          const Icon = card.icon;
+          {
+            icon: Phone,
+            title: "Police",
+            number: "15",
+            color: "bg-blue-50 border-blue-200 text-blue-700",
+          },
+          {
+            icon: Phone,
+            title: "Rescue",
+            number: "1122",
+            color: "bg-green-50 border-green-200 text-green-700",
+          },
+          {
+            icon: Phone,
+            title: "Women Helpline",
+            number: "1043",
+            color: "bg-pink-50 border-pink-200 text-pink-700",
+          },
+        ].map((item, i) => {
+          const Icon = item.icon;
           return (
-            <div key={i} className="bg-white border border-[#e1cfe6]/60 rounded-2xl p-5">
-              <div className={`w-11 h-11 ${card.color} rounded-xl flex items-center justify-center mb-4`}>
-                <Icon size={20} />
+            <a
+              key={i}
+              href={`tel:${item.number}`}
+              className={`border rounded-2xl p-5 flex items-center gap-4 hover:shadow-md transition ${item.color}`}
+            >
+              <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm">
+                <Icon size={18} />
               </div>
-              <h3 className="font-bold text-[#402763] text-sm mb-1">{card.title}</h3>
-              <p className="text-[#402763]/60 text-xs leading-relaxed">{card.desc}</p>
-            </div>
+              <div>
+                <div className="font-bold text-sm">{item.title}</div>
+                <div className="text-2xl font-black">{item.number}</div>
+              </div>
+            </a>
           );
         })}
       </div>
 
-      {/* Emergency Contact Summary */}
-      <div className="bg-[#402763] rounded-2xl p-6 text-white">
-        <h3 className="font-black mb-4 flex items-center gap-2"><Phone size={18} className="text-[#ffcd60]" /> Your Emergency Contacts</h3>
-        <div className="space-y-3">
-          {[
-            { name: 'Ammi (Parent)', phone: '+92 300 000 0000', email: 'ammi@example.com', whatsapp: '+92 300 000 0000' },
-          ].map((c, i) => (
-            <div key={i} className="bg-white/10 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center gap-3 justify-between">
-              <div>
-                <div className="font-bold text-[#ffcd60]">{c.name}</div>
-                <div className="text-[#e1cfe6]/70 text-sm">{c.phone}</div>
+      {/* SOS History */}
+      {!loadingHistory && sosHistory.length > 0 && (
+        <div className="bg-white rounded-2xl border border-gray-100 p-6">
+          <h2 className="text-lg font-black text-[#402763] mb-4">
+            SOS History
+          </h2>
+          <div className="space-y-3">
+            {sosHistory.map((alert) => (
+              <div
+                key={alert.id}
+                className="flex items-center justify-between py-2 border-b border-gray-50 last:border-0"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-[#402763]">
+                    {new Date(alert.created_at).toLocaleString()}
+                  </p>
+                  {alert.address && (
+                    <p className="text-xs text-[#402763]/50">{alert.address}</p>
+                  )}
+                </div>
+                <span
+                  className={`text-xs px-2.5 py-1 rounded-full font-bold ${alert.status === "active" ? "bg-red-100 text-red-700" : "bg-green-100 text-green-700"}`}
+                >
+                  {alert.status}
+                </span>
               </div>
-              <div className="flex gap-3 text-sm">
-                <span className="text-[#e1cfe6]/60 flex items-center gap-1"><Mail size={12} /> {c.email}</span>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-        <p className="text-[#e1cfe6]/50 text-xs mt-4">Update your emergency contacts in Profile settings.</p>
-      </div>
+      )}
     </div>
   );
 };
