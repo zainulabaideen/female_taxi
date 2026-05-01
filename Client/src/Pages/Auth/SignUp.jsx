@@ -1,22 +1,27 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, Shield, Car, User, Phone, Mail, Lock, ChevronRight, ChevronLeft, Calendar, MapPin } from 'lucide-react';
+import { Eye, EyeOff, Shield, Car, User, Phone, Mail, Lock, ChevronRight, ChevronLeft, Calendar, MapPin, Upload, ArrowLeft } from 'lucide-react';
 import { toast } from 'react-toastify';
+import { authAPI } from '../../services/api';
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const [step, setStep] = useState(1); // 1: role select, 2: personal info, 3: role-specific
-  const [role, setRole] = useState(null); // 'passenger' | 'driver'
+  const [step, setStep] = useState(1);
+  const [role, setRole] = useState(null);
   const [showPass, setShowPass] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  // CNIC file state
+  const [cnicFront, setCnicFront] = useState(null);
+  const [cnicBack, setCnicBack] = useState(null);
+
   const [form, setForm] = useState({
     fullName: '', email: '', phone: '', password: '', confirmPassword: '',
     // Passenger extras
-    emergencyName: '', emergencyPhone: '', emergencyEmail: '', whatsapp: '',
+    emergencyName: '', emergencyPhone: '', emergencyEmail: '', whatsapp: '', guardianEmail: '',
     // Driver extras
     carModel: '', licensePlate: '', carYear: '', location: '',
     availableDays: [], fromTime: '09:00', toTime: '21:00',
@@ -33,31 +38,67 @@ const SignUp = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (form.password !== form.confirmPassword) {
       toast.error('Passwords do not match!');
       return;
     }
+
     setLoading(true);
-    setTimeout(() => {
+    try {
+      if (role === 'passenger') {
+        await authAPI.signupPassenger({
+          full_name: form.fullName,
+          email: form.email,
+          phone: form.phone,
+          password: form.password,
+          emergency_name: form.emergencyName,
+          emergency_phone: form.emergencyPhone,
+          emergency_email: form.emergencyEmail,
+          whatsapp: form.whatsapp,
+          guardian_email: form.guardianEmail,
+        });
+        toast.success('Account created! Please sign in. 🎉');
+        navigate('/login');
+      } else {
+        // Driver — use FormData for file upload
+        if (!cnicFront || !cnicBack) {
+          toast.error('Please upload both CNIC front and back images');
+          setLoading(false);
+          return;
+        }
+        const fd = new FormData();
+        fd.append('full_name', form.fullName);
+        fd.append('email', form.email);
+        fd.append('phone', form.phone);
+        fd.append('password', form.password);
+        fd.append('car_model', form.carModel);
+        fd.append('license_plate', form.licensePlate);
+        fd.append('car_year', form.carYear);
+        fd.append('location', form.location);
+        fd.append('cnic_front', cnicFront);
+        fd.append('cnic_back', cnicBack);
+
+        await authAPI.signupDriver(fd);
+        toast.success('Driver application submitted! Admin will review within 24–48 hours. 🚗');
+        navigate('/login');
+      }
+    } catch (err) {
+      const msg = err.response?.data?.message || 'Signup failed. Please try again.';
+      toast.error(msg);
+    } finally {
       setLoading(false);
-      toast.success('Account created! Please sign in.');
-      navigate('/login');
-    }, 1500);
+    }
   };
 
   const progressSteps = ['Choose Role', 'Personal Info', role === 'driver' ? 'Driver Setup' : 'Safety Info'];
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#e1cfe6] py-12 px-6">
+    <main className="min-h-screen flex items-center justify-center bg-[#e1cfe6] py-12 px-6">
       <div className="w-full max-w-2xl">
-        {/* Logo */}
         <Link to="/" className="flex items-center justify-center gap-2 mb-8">
-          <div className="w-9 h-9 bg-[#402763] rounded-xl flex items-center justify-center">
-            <Shield size={18} className="text-[#ffcd60]" />
-          </div>
-          <span className="text-xl font-black text-[#402763]">SHE<span className="text-[#ffcd60]">GO</span></span>
+          <img src="/logo.png" alt="shego" className='md:w-18 w-12' />
         </Link>
 
         {/* Progress Bar */}
@@ -86,17 +127,17 @@ const SignUp = () => {
           {/* ── STEP 1: Role Selection ── */}
           {step === 1 && (
             <div>
-              <h1 className="text-2xl font-black text-[#402763] mb-2">Join SHEGO as...</h1>
+              <div className='flex gap-3 items-center mb-2'>
+                <Link to="/"><ArrowLeft className="text-[#402763] w-7 h-7 hover:-translate-x-1 transition" /></Link>
+                <h1 className="text-2xl font-black text-[#402763]">Join SHEGO as...</h1>
+              </div>
               <p className="text-[#402763]/60 text-sm mb-8">Choose your account type to get started.</p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
-                {/* Passenger Card */}
                 <button
                   onClick={() => setRole('passenger')}
                   className={`relative text-left p-6 rounded-2xl border-2 transition-all duration-200 group ${
-                    role === 'passenger'
-                      ? 'border-[#402763] bg-[#402763]/5 shadow-lg shadow-[#402763]/10'
-                      : 'border-[#e1cfe6] hover:border-[#402763]/30 hover:shadow-md'
+                    role === 'passenger' ? 'border-[#402763] bg-[#402763]/5 shadow-lg' : 'border-[#e1cfe6] hover:border-[#402763]/30 hover:shadow-md'
                   }`}
                 >
                   {role === 'passenger' && (
@@ -108,16 +149,13 @@ const SignUp = () => {
                     <User size={24} />
                   </div>
                   <h3 className="font-black text-[#402763] text-lg mb-2">Passenger</h3>
-                  <p className="text-[#402763]/60 text-sm">Book rides from verified female drivers. Set emergency contacts for added safety.</p>
+                  <p className="text-[#402763]/60 text-sm">Book rides from verified female captain. Set emergency contacts for added safety.</p>
                 </button>
 
-                {/* Driver Card */}
                 <button
                   onClick={() => setRole('driver')}
                   className={`relative text-left p-6 rounded-2xl border-2 transition-all duration-200 ${
-                    role === 'driver'
-                      ? 'border-[#402763] bg-[#402763]/5 shadow-lg shadow-[#402763]/10'
-                      : 'border-[#e1cfe6] hover:border-[#402763]/30 hover:shadow-md'
+                    role === 'driver' ? 'border-[#402763] bg-[#402763]/5 shadow-lg' : 'border-[#e1cfe6] hover:border-[#402763]/30 hover:shadow-md'
                   }`}
                 >
                   {role === 'driver' && (
@@ -128,10 +166,17 @@ const SignUp = () => {
                   <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 ${role === 'driver' ? 'bg-[#ffcd60] text-[#402763]' : 'bg-[#e1cfe6] text-[#402763]'}`}>
                     <Car size={24} />
                   </div>
-                  <h3 className="font-black text-[#402763] text-lg mb-2">Driver</h3>
-                  <p className="text-[#402763]/60 text-sm">Earn flexibly by offering rides. Set your own schedule and available hours.</p>
+                  <h3 className="font-black text-[#402763] text-lg mb-2">Driver (Captain)</h3>
+                  <p className="text-[#402763]/60 text-sm">Earn flexibly. Your application will be reviewed by admin before activation.</p>
                 </button>
               </div>
+
+              {role === 'driver' && (
+                <div className="mb-5 p-4 bg-amber-50 border border-amber-200 rounded-xl text-sm text-amber-700 flex items-start gap-2">
+                  <Shield size={16} className="flex-shrink-0 mt-0.5" />
+                  <span><strong>Note:</strong> Driver accounts require admin verification. You'll need to upload your CNIC (front & back). Account activation takes 24–48 hours.</span>
+                </div>
+              )}
 
               <button
                 onClick={() => role && setStep(2)}
@@ -209,7 +254,7 @@ const SignUp = () => {
               </div>
 
               <div className="flex gap-3 mt-8">
-                <button type="button" onClick={() => setStep(1)} className="flex items-center gap-1 px-5 py-3.5 border-2 border-[#e1cfe6] text-[#402763] font-bold rounded-xl hover:border-[#402763]/30 transition text-sm">
+                <button type="button" onClick={() => setStep(1)} className="flex items-center gap-1 px-5 py-3.5 border-2 bg-[#ffcd60] border-[#e1cfe6] text-[#402763] font-bold rounded-xl hover:border-[#402763]/30 transition text-sm">
                   <ChevronLeft size={16} /> Back
                 </button>
                 <button type="submit" className="flex-1 flex items-center justify-center gap-2 py-3.5 bg-[#402763] text-white font-bold rounded-xl hover:bg-[#402763]/90 transition text-sm shadow-lg shadow-[#402763]/20">
@@ -227,7 +272,7 @@ const SignUp = () => {
               </h1>
               <p className="text-[#402763]/60 text-sm mb-8">
                 {role === 'driver'
-                  ? 'Add your vehicle details and set your available schedule.'
+                  ? 'Add your vehicle details and upload your CNIC for verification.'
                   : 'Add emergency contacts so your family is always informed if needed.'}
               </p>
 
@@ -262,20 +307,24 @@ const SignUp = () => {
                         <input type="tel" name="whatsapp" value={form.whatsapp} onChange={handleChange} required placeholder="+92 300 000 0000"
                           className="w-full px-4 py-3 rounded-xl border border-[#e1cfe6] bg-white text-[#402763] placeholder-[#402763]/30 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm" />
                       </div>
+                      <div>
+                        <label className="block text-xs font-semibold text-[#402763] mb-1.5">Guardian Email (receives trip notifications)</label>
+                        <input type="email" name="guardianEmail" value={form.guardianEmail} onChange={handleChange} placeholder="guardian@example.com"
+                          className="w-full px-4 py-3 rounded-xl border border-[#e1cfe6] bg-white text-[#402763] placeholder-[#402763]/30 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm" />
+                      </div>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* DRIVER: Vehicle + Schedule */}
+              {/* DRIVER: Vehicle + CNIC */}
               {role === 'driver' && (
                 <div className="space-y-5">
-                  {/* Vehicle */}
                   <div>
                     <label className="block text-sm font-semibold text-[#402763] mb-2">Current City / Location</label>
                     <div className="relative">
                       <MapPin size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#402763]/40" />
-                      <input type="text" name="location" value={form.location} onChange={handleChange} required placeholder="e.g. Karachi, DHA Phase 5"
+                      <input type="text" name="location" value={form.location} onChange={handleChange} required placeholder="e.g. Lahore, DHA Phase 5"
                         className="w-full pl-10 pr-4 py-3.5 rounded-xl border border-[#e1cfe6] bg-[#e1cfe6]/10 text-[#402763] placeholder-[#402763]/30 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm" />
                     </div>
                   </div>
@@ -295,49 +344,38 @@ const SignUp = () => {
 
                   <div>
                     <label className="block text-sm font-semibold text-[#402763] mb-2">License Plate</label>
-                    <input type="text" name="licensePlate" value={form.licensePlate} onChange={handleChange} required placeholder="e.g. KHI-123"
+                    <input type="text" name="licensePlate" value={form.licensePlate} onChange={handleChange} required placeholder="e.g. LEA-1234"
                       className="w-full px-4 py-3.5 rounded-xl border border-[#e1cfe6] bg-[#e1cfe6]/10 text-[#402763] placeholder-[#402763]/30 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm" />
                   </div>
 
-                  {/* Schedule */}
-                  <div className="bg-[#e1cfe6]/30 rounded-2xl p-5 border border-[#e1cfe6]">
-                    <h3 className="font-bold text-[#402763] mb-4 text-sm flex items-center gap-2">
-                      <Calendar size={16} className="text-[#402763]" />
-                      Available Schedule
+                  {/* CNIC Upload */}
+                  <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
+                    <h3 className="font-bold text-amber-800 mb-4 text-sm flex items-center gap-2">
+                      <Upload size={16} />
+                      CNIC Verification (Required)
                     </h3>
-
-                    {/* Days */}
-                    <div className="mb-4">
-                      <label className="block text-xs font-semibold text-[#402763] mb-2">Available Days</label>
-                      <div className="flex flex-wrap gap-2">
-                        {DAYS.map((day) => (
-                          <button
-                            key={day}
-                            type="button"
-                            onClick={() => toggleDay(day)}
-                            className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                              form.availableDays.includes(day)
-                                ? 'bg-[#402763] text-white'
-                                : 'bg-white border border-[#e1cfe6] text-[#402763]/60 hover:border-[#402763]/30'
-                            }`}
-                          >
-                            {day}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Time Range */}
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-semibold text-[#402763] mb-1.5">From</label>
-                        <input type="time" name="fromTime" value={form.fromTime} onChange={handleChange}
-                          className="w-full px-3 py-2.5 rounded-xl border border-[#e1cfe6] bg-white text-[#402763] focus:outline-none focus:border-[#402763] text-sm" />
+                        <label className="block text-xs font-semibold text-amber-700 mb-2">CNIC Front Side</label>
+                        <input
+                          type="file"
+                          accept="image/jpeg,image/png,image/webp"
+                          required
+                          onChange={(e) => setCnicFront(e.target.files[0])}
+                          className="w-full text-sm text-amber-800 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-amber-100 file:text-amber-700 hover:file:bg-amber-200 transition cursor-pointer"
+                        />
+                        {cnicFront && <p className="text-xs text-green-600 mt-1">✓ {cnicFront.name}</p>}
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-[#402763] mb-1.5">To</label>
-                        <input type="time" name="toTime" value={form.toTime} onChange={handleChange}
-                          className="w-full px-3 py-2.5 rounded-xl border border-[#e1cfe6] bg-white text-[#402763] focus:outline-none focus:border-[#402763] text-sm" />
+                        <label className="block text-xs font-semibold text-amber-700 mb-2">CNIC Back Side</label>
+                        <input
+                          type="file"
+                          accept="image/jpeg,image/png,image/webp"
+                          required
+                          onChange={(e) => setCnicBack(e.target.files[0])}
+                          className="w-full text-sm text-amber-800 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-amber-100 file:text-amber-700 hover:file:bg-amber-200 transition cursor-pointer"
+                        />
+                        {cnicBack && <p className="text-xs text-green-600 mt-1">✓ {cnicBack.name}</p>}
                       </div>
                     </div>
                   </div>
@@ -345,7 +383,7 @@ const SignUp = () => {
               )}
 
               <div className="flex gap-3 mt-8">
-                <button type="button" onClick={() => setStep(2)} className="flex items-center gap-1 px-5 py-3.5 border-2 border-[#e1cfe6] text-[#402763] font-bold rounded-xl hover:border-[#402763]/30 transition text-sm">
+                <button type="button" onClick={() => setStep(2)} className="flex items-center gap-1 px-5 py-3.5 border-2 bg-[#ffcd60] border-[#e1cfe6] text-[#402763] font-bold rounded-xl hover:border-[#402763]/30 transition text-sm">
                   <ChevronLeft size={16} /> Back
                 </button>
                 <button
@@ -357,7 +395,7 @@ const SignUp = () => {
                   {loading ? (
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   ) : (
-                    <>Create My Account <ChevronRight size={16} /></>
+                    <>{role === 'driver' ? 'Submit Application' : 'Create My Account'} <ChevronRight size={16} /></>
                   )}
                 </button>
               </div>

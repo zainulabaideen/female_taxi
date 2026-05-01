@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 const stats = [
-  { value: 500, suffix: '+', label: 'Female Drivers' },
+  { value: 500, suffix: '+', label: 'Female captain' },
   { value: 10000, suffix: '+', label: 'Happy Rides' },
   { value: 4.9, suffix: '★', label: 'Average Rating', decimal: true },
   { value: 100, suffix: '%', label: 'Women Only' },
@@ -64,7 +64,7 @@ const Stats = () => {
           <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-2">By The Numbers</p>
           <h2 className="text-4xl font-black text-[#402763]">Trusted by Thousands of Women</h2>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((s, i) => (
             <StatCard key={i} {...s} delay={i * 100} />
           ))}

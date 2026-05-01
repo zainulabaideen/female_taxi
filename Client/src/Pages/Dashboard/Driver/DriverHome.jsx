@@ -1,175 +1,346 @@
-import React, { useState } from 'react';
-import { Car, Star, Clock, DollarSign, TrendingUp, Calendar, Plus, Trash2, CheckCircle2 } from 'lucide-react';
-
-const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-
-const generateSlots = () => {
-  const slots = [];
-  for (let h = 9; h <= 20; h++) {
-    const time = `${h.toString().padStart(2, '0')}:00`;
-    const timeEnd = `${(h + 1).toString().padStart(2, '0')}:00`;
-    slots.push({ id: h, time: `${time} – ${timeEnd}`, booked: Math.random() > 0.7 });
-  }
-  return slots;
-};
+import React, { useState, useEffect } from "react";
+import {
+  Car,
+  Star,
+  Clock,
+  TrendingUp,
+  Plus,
+  Trash2,
+  CheckCircle2,
+  AlertCircle,
+  Calendar,
+} from "lucide-react";
+import { toast } from "react-toastify";
+import { driverAPI, bookingAPI } from "../../../services/api";
+import { useAuth } from "../../../context/AuthContext";
 
 const DriverHome = () => {
-  const [selectedDay, setSelectedDay] = useState('Mon');
-  const [slots, setSlots] = useState(generateSlots());
-  const [newFrom, setNewFrom] = useState('');
-  const [newTo, setNewTo] = useState('');
+  const { user } = useAuth();
+  const [availability, setAvailability] = useState([]);
+  const [bookings, setBookings] = useState([]);
+  const [profile, setProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const stats = [
-    { icon: Car, label: 'Total Rides', value: '128', change: '+12 this week', color: 'bg-[#402763] text-white' },
-    { icon: Star, label: 'Avg Rating', value: '4.9', change: '★ Excellent', color: 'bg-[#ffcd60] text-[#402763]' },
-    { icon: Clock, label: 'Hours Driven', value: '342', change: 'This month', color: 'bg-[#e1cfe6] text-[#402763]' },
-    { icon: DollarSign, label: 'Earnings', value: 'PKR 45K', change: '+8% vs last month', color: 'bg-green-100 text-green-700' },
-  ];
+  // New availability form
+  const [newAvailability, setNewAvailability] = useState({
+    available_date: "",
+    from_time: "09:00",
+    to_time: "17:00",
+    duration_minutes: 60,
+  });
+  const [addingAvailability, setAddingAvailability] = useState(false);
 
-  const addSlot = () => {
-    if (!newFrom || !newTo) return;
-    setSlots((p) => [...p, { id: Date.now(), time: `${newFrom} – ${newTo}`, booked: false }]);
-    setNewFrom('');
-    setNewTo('');
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const [profileRes, availRes, bookingsRes] = await Promise.all([
+          driverAPI.getProfile(),
+          driverAPI.getAvailability(),
+          bookingAPI.getDriverBookings(),
+        ]);
+        setProfile(profileRes.data);
+        setAvailability(availRes.data || []);
+        setBookings(bookingsRes.data || []);
+      } catch (err) {
+        console.error("Load error:", err);
+        toast.error("Failed to load data");
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+  }, []);
+
+  const addAvailability = async () => {
+    if (!newAvailability.available_date || !newAvailability.from_time || !newAvailability.to_time) {
+      return toast.error("Please fill all fields");
+    }
+
+    setAddingAvailability(true);
+    try {
+      const result = await driverAPI.addAvailability(newAvailability);
+      toast.success(result.data.message);
+
+      // Refresh availability
+      const res = await driverAPI.getAvailability();
+      setAvailability(res.data || []);
+
+      // Reset form
+      setNewAvailability({
+        available_date: "",
+        from_time: "09:00",
+        to_time: "17:00",
+        duration_minutes: 60,
+      });
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed to add availability");
+    } finally {
+      setAddingAvailability(false);
+    }
   };
 
-  const removeSlot = (id) => setSlots((p) => p.filter((s) => s.id !== id));
+  const removeAvailability = async (slotId) => {
+    try {
+      await driverAPI.deleteAvailability(slotId);
+      setAvailability((p) => p.filter((s) => s.id !== slotId));
+      toast.success("Availability removed");
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Cannot remove if slots are booked");
+    }
+  };
+
+  const updateBookingStatus = async (bookingId, status) => {
+    try {
+      await bookingAPI.updateBookingStatus(bookingId, status);
+      const res = await bookingAPI.getDriverBookings();
+      setBookings(res.data);
+      toast.success(`Ride ${status}`);
+    } catch (err) {
+      toast.error(err.response?.data?.message || "Failed");
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="flex justify-center py-20">
+        <div className="w-10 h-10 border-4 border-[#402763] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
   return (
-    <div className="space-y-8">
-      {/* Stats */}
-      <div>
-        <h1 className="text-2xl font-black text-[#402763] mb-6">Good Morning, Driver! 👋</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {stats.map((s, i) => {
-            const Icon = s.icon;
-            return (
-              <div key={i} className="bg-white rounded-2xl border border-gray-100 p-5 hover:shadow-md transition">
-                <div className={`w-11 h-11 ${s.color} rounded-xl flex items-center justify-center mb-4`}>
-                  <Icon size={20} />
-                </div>
-                <div className="text-2xl font-black text-[#402763]">{s.value}</div>
-                <div className="text-sm text-[#402763]/60 mb-1">{s.label}</div>
-                <div className="text-xs text-green-600 font-medium flex items-center gap-1">
-                  <TrendingUp size={11} /> {s.change}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Schedule Manager */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h2 className="text-xl font-black text-[#402763]">⏰ Schedule Manager</h2>
-            <p className="text-sm text-[#402763]/60 mt-1">Manage your available time slots for each day.</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-green-400" /> <span className="text-xs text-gray-500">Available</span>
-            <div className="w-3 h-3 rounded-full bg-red-400 ml-3" /> <span className="text-xs text-gray-500">Booked</span>
-          </div>
-        </div>
-
-        {/* Day Selector */}
-        <div className="flex gap-2 mb-6 flex-wrap">
-          {DAYS.map((day) => (
-            <button
-              key={day}
-              onClick={() => { setSelectedDay(day); setSlots(generateSlots()); }}
-              className={`px-4 py-2 rounded-xl text-sm font-bold transition-all ${
-                selectedDay === day ? 'bg-[#402763] text-white shadow-md' : 'bg-[#e1cfe6]/40 text-[#402763] hover:bg-[#e1cfe6]'
-              }`}
-            >
-              {day}
-            </button>
-          ))}
-        </div>
-
-        {/* Add New Slot */}
-        <div className="flex flex-wrap gap-3 mb-5 p-4 bg-[#e1cfe6]/20 rounded-xl border border-[#e1cfe6]/60">
-          <div className="flex items-center gap-2">
-            <label className="text-xs font-semibold text-[#402763]">From</label>
-            <input type="time" value={newFrom} onChange={(e) => setNewFrom(e.target.value)}
-              className="px-3 py-2 rounded-lg border border-[#e1cfe6] text-[#402763] text-sm focus:outline-none focus:border-[#402763]" />
-          </div>
-          <div className="flex items-center gap-2">
-            <label className="text-xs font-semibold text-[#402763]">To</label>
-            <input type="time" value={newTo} onChange={(e) => setNewTo(e.target.value)}
-              className="px-3 py-2 rounded-lg border border-[#e1cfe6] text-[#402763] text-sm focus:outline-none focus:border-[#402763]" />
-          </div>
-          <button onClick={addSlot}
-            className="flex items-center gap-1.5 px-4 py-2 bg-[#402763] text-white text-sm font-bold rounded-lg hover:bg-[#402763]/90 transition">
-            <Plus size={15} /> Add Slot
-          </button>
-        </div>
-
-        {/* Slots Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-          {slots.map((slot) => (
-            <div
-              key={slot.id}
-              className={`relative flex items-center justify-between px-4 py-3 rounded-xl border text-sm font-semibold transition-all group ${
-                slot.booked
-                  ? 'bg-red-50 border-red-200 text-red-500'
-                  : 'bg-green-50 border-green-200 text-green-700 hover:border-green-400'
-              }`}
-            >
-              <div>
-                <div className="text-xs">{slot.time}</div>
-                <div className={`text-xs font-normal mt-0.5 ${slot.booked ? 'text-red-400' : 'text-green-500'}`}>
-                  {slot.booked ? 'Booked' : 'Available'}
-                </div>
-              </div>
-              {!slot.booked && (
-                <button
-                  onClick={() => removeSlot(slot.id)}
-                  className="opacity-0 group-hover:opacity-100 text-red-400 hover:text-red-600 transition ml-2"
-                >
-                  <Trash2 size={13} />
-                </button>
-              )}
-              {slot.booked && <CheckCircle2 size={14} className="text-red-400 flex-shrink-0" />}
+    <div className="space-y-6">
+      {/* Header Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-gradient-to-br from-[#402763] to-[#5a3585] rounded-2xl p-6 text-white">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-white/60 text-sm">Total Rides</p>
+              <p className="text-3xl font-black">{profile?.total_rides || 0}</p>
             </div>
-          ))}
+            <Car size={32} className="opacity-20" />
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-br from-[#ffcd60] to-[#ffd97d] rounded-2xl p-6 text-[#402763]">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-[#402763]/60 text-sm">Rating</p>
+              <p className="text-3xl font-black">
+                {profile?.rating_avg ? parseFloat(profile.rating_avg).toFixed(1) : "–"}
+              </p>
+            </div>
+            <Star size={32} className="opacity-20 fill-current" />
+          </div>
+        </div>
+
+        <div className="bg-gradient-to-br from-[#e1cfe6] to-[#ede0f2] rounded-2xl p-6 text-[#402763]">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-[#402763]/60 text-sm">Availability Slots</p>
+              <p className="text-3xl font-black">{availability.length}</p>
+            </div>
+            <Calendar size={32} className="opacity-20" />
+          </div>
         </div>
       </div>
 
-      {/* Recent Rides */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6">
-        <h2 className="text-xl font-black text-[#402763] mb-5">Recent Rides</h2>
-        <div className="overflow-x-auto">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="text-[#402763]/50 border-b border-gray-100 text-left">
-                <th className="pb-3 font-semibold">Passenger</th>
-                <th className="pb-3 font-semibold">Date & Time</th>
-                <th className="pb-3 font-semibold">Route</th>
-                <th className="pb-3 font-semibold">Rating</th>
-                <th className="pb-3 font-semibold">Earnings</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-50">
-              {[
-                { name: 'Fatima A.', date: 'Apr 11, 9:00 AM', route: 'DHA → Clifton', rating: '5.0', earn: 'PKR 450' },
-                { name: 'Sara M.', date: 'Apr 10, 2:00 PM', route: 'Gulshan → Saddar', rating: '4.8', earn: 'PKR 320' },
-                { name: 'Amna R.', date: 'Apr 10, 11:00 AM', route: 'North Nazimabad → PECHS', rating: '5.0', earn: 'PKR 380' },
-              ].map((r, i) => (
-                <tr key={i} className="text-[#402763]/80 hover:bg-gray-50 transition">
-                  <td className="py-3 font-medium">{r.name}</td>
-                  <td className="py-3 text-[#402763]/50">{r.date}</td>
-                  <td className="py-3">{r.route}</td>
-                  <td className="py-3">
-                    <span className="bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full text-xs font-bold">★ {r.rating}</span>
-                  </td>
-                  <td className="py-3 font-bold text-green-600">{r.earn}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      {/* Add Availability Section */}
+      <div className="bg-white rounded-2xl border border-[#e1cfe6] p-6">
+        <h2 className="text-xl font-black text-[#402763] mb-6 flex items-center gap-2">
+          <Plus size={24} className="text-[#ffcd60]" /> Add Availability
+        </h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-semibold text-[#402763] mb-2">Date</label>
+            <input
+              type="date"
+              value={newAvailability.available_date}
+              onChange={(e) =>
+                setNewAvailability((p) => ({ ...p, available_date: e.target.value }))
+              }
+              min={new Date().toISOString().split("T")[0]}
+              className="w-full px-4 py-3 rounded-xl border border-[#e1cfe6] text-[#402763] focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-[#402763] mb-2">Slot Duration</label>
+            <select
+              value={newAvailability.duration_minutes}
+              onChange={(e) =>
+                setNewAvailability((p) => ({ ...p, duration_minutes: parseInt(e.target.value) }))
+              }
+              className="w-full px-4 py-3 rounded-xl border border-[#e1cfe6] text-[#402763] focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm"
+            >
+              <option value={15}>15 minutes</option>
+              <option value={30}>30 minutes</option>
+              <option value={60}>1 hour</option>
+              <option value={120}>2 hours</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-[#402763] mb-2">From Time</label>
+            <input
+              type="time"
+              value={newAvailability.from_time}
+              onChange={(e) =>
+                setNewAvailability((p) => ({ ...p, from_time: e.target.value }))
+              }
+              className="w-full px-4 py-3 rounded-xl border border-[#e1cfe6] text-[#402763] focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-[#402763] mb-2">To Time</label>
+            <input
+              type="time"
+              value={newAvailability.to_time}
+              onChange={(e) =>
+                setNewAvailability((p) => ({ ...p, to_time: e.target.value }))
+              }
+              className="w-full px-4 py-3 rounded-xl border border-[#e1cfe6] text-[#402763] focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm"
+            />
+          </div>
         </div>
+
+        <div className="mt-6 p-4 bg-[#ede0f2] rounded-xl border border-[#e1cfe6]">
+          <p className="text-sm text-[#402763] font-semibold">
+            ℹ️ This will create{" "}
+            {Math.ceil(
+              ((parseInt(newAvailability.to_time?.split(":")[0]) * 60 +
+                parseInt(newAvailability.to_time?.split(":")[1])) -
+                (parseInt(newAvailability.from_time?.split(":")[0]) * 60 +
+                  parseInt(newAvailability.from_time?.split(":")[1]))) /
+              newAvailability.duration_minutes || 0
+            )}{" "}
+            independently bookable slots
+          </p>
+        </div>
+
+        <button
+          onClick={addAvailability}
+          disabled={addingAvailability}
+          className="w-full mt-6 px-6 py-3 bg-[#402763] text-white font-bold rounded-xl hover:bg-[#402763]/90 transition text-sm flex items-center justify-center gap-2"
+        >
+          {addingAvailability ? (
+            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+          ) : (
+            <Plus size={16} />
+          )}
+          Add Availability
+        </button>
       </div>
+
+      {/* Availability List */}
+      {availability.length > 0 && (
+        <div className="bg-white rounded-2xl border border-[#e1cfe6] p-6">
+          <h2 className="text-xl font-black text-[#402763] mb-6 flex items-center gap-2">
+            <Calendar size={24} className="text-[#ffcd60]" /> Your Availability
+          </h2>
+
+          <div className="space-y-3">
+            {availability.map((slot) => (
+              <div
+                key={slot.id}
+                className="flex items-center justify-between bg-[#ede0f2] rounded-lg p-4"
+              >
+                <div className="flex-1">
+                  <p className="font-semibold text-[#402763]">
+                    {new Date(slot.available_date).toLocaleDateString("en-US", {
+                      weekday: "short",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </p>
+                  <p className="text-sm text-[#402763]/60">
+                    {slot.from_time} - {slot.to_time} ({slot.subSlots?.length || 0} slots)
+                  </p>
+                </div>
+                <button
+                  onClick={() => removeAvailability(slot.id)}
+                  className="p-2 text-red-600 hover:bg-red-100 rounded-lg transition"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Incoming Bookings */}
+      {bookings.length > 0 && (
+        <div className="bg-white rounded-2xl border border-[#e1cfe6] p-6">
+          <h2 className="text-xl font-black text-[#402763] mb-6 flex items-center gap-2">
+            <TrendingUp size={24} className="text-[#ffcd60]" /> Recent Bookings
+          </h2>
+
+          <div className="space-y-3">
+            {bookings.slice(0, 5).map((booking) => (
+              <div key={booking.id} className="border border-[#e1cfe6] rounded-lg p-4">
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex-1">
+                    <p className="font-semibold text-[#402763]">{booking.passenger_name}</p>
+                    <p className="text-sm text-[#402763]/60">
+                      {booking.pickup_address} → {booking.dropoff_address}
+                    </p>
+                    {booking.total_fare && (
+                      <p className="text-sm font-bold text-[#402763] mt-1">
+                        Rs. {parseFloat(booking.total_fare).toFixed(2)}
+                      </p>
+                    )}
+                  </div>
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-bold ${
+                      booking.status === "completed"
+                        ? "bg-green-100 text-green-700"
+                        : booking.status === "in_progress"
+                          ? "bg-blue-100 text-blue-700"
+                          : booking.status === "confirmed"
+                            ? "bg-yellow-100 text-yellow-700"
+                            : "bg-gray-100 text-gray-700"
+                    }`}
+                  >
+                    {booking.status}
+                  </span>
+                </div>
+
+                {booking.status === "confirmed" && (
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => updateBookingStatus(booking.id, "in_progress")}
+                      className="flex-1 px-3 py-2 bg-[#402763] text-white text-xs font-bold rounded-lg hover:bg-[#402763]/90 transition"
+                    >
+                      Start Ride
+                    </button>
+                  </div>
+                )}
+
+                {booking.status === "in_progress" && (
+                  <button
+                    onClick={() => updateBookingStatus(booking.id, "completed")}
+                    className="w-full px-3 py-2 bg-green-600 text-white text-xs font-bold rounded-lg hover:bg-green-700 transition flex items-center justify-center gap-2"
+                  >
+                    <CheckCircle2 size={14} /> Done Driving
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Empty State */}
+      {availability.length === 0 && bookings.length === 0 && (
+        <div className="bg-[#ede0f2] rounded-2xl border border-[#e1cfe6] p-12 text-center">
+          <AlertCircle size={48} className="mx-auto text-[#402763]/40 mb-4" />
+          <p className="text-[#402763] font-semibold">No availability or bookings yet</p>
+          <p className="text-[#402763]/60 text-sm">Add your availability to get started!</p>
+        </div>
+      )}
     </div>
   );
 };

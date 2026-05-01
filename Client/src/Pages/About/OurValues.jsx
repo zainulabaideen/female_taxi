@@ -12,21 +12,21 @@ const values = [
   {
     icon: Heart,
     title: 'Empowerment',
-    desc: 'We empower women as both passengers and drivers — earning, traveling, and thriving freely.',
-    color: 'bg-[#ffcd60] text-[#402763]',
-    accent: 'border-[#ffcd60]/40',
+    desc: 'We empower women as both passengers and captain — earning, traveling, and thriving freely.',
+    color: 'bg-[#402763] text-white',
+    accent: 'border-[#402763]/20',
   },
   {
     icon: Users,
     title: 'Community',
     desc: 'SHEGO is more than an app — it\'s a community of women supporting women.',
-    color: 'bg-[#e1cfe6] text-[#402763]',
-    accent: 'border-[#e1cfe6]/80',
+    color: 'bg-[#402763] text-white',
+    accent: 'border-[#402763]/20',
   },
   {
     icon: Zap,
     title: 'Reliability',
-    desc: 'Fast matching, transparent pricing, and drivers who show up on time, every time.',
+    desc: 'Fast matching, transparent pricing, and captain who show up on time, every time.',
     color: 'bg-[#402763] text-white',
     accent: 'border-[#402763]/20',
   },
@@ -34,7 +34,7 @@ const values = [
 
 const OurValues = () => {
   return (
-    <section className="py-24 bg-[#e1cfe6]/20">
+    <section className="py-24 bg-[#e1cfe6]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16" data-aos="fade-up">
           <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-3">What Drives Us</p>
