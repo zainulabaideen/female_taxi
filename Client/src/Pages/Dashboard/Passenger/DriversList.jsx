@@ -11,7 +11,7 @@ import {
 import { toast } from "react-toastify";
 import { driverAPI, bookingAPI } from "../../../services/api";
 
-const BASE = import.meta.env.VITE_NODE_URL || "http://localhost:4343";
+const BASE = import.meta.env.VITE_NODE_URL || "https://test.freethemekit.com";
 
 const BookingModal = ({ driver, onClose, onBooked }) => {
   const [slots, setSlots] = useState([]);

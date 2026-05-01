@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.VITE_NODE_URL || 'http://localhost:4343';
+const BASE_URL = import.meta.env.VITE_NODE_URL || 'https://test.freethemekit.com';
 
 const api = axios.create({
   baseURL: BASE_URL,
