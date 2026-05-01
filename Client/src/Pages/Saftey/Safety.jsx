@@ -74,6 +74,7 @@ const Safety = () => {
               <p className="text-gray-600">{item.desc}</p>
             </div>
           ))}
+          
         </div>
       </section>
     </div>
