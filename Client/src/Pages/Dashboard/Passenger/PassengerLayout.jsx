@@ -70,15 +70,14 @@ const PassengerLayout = ({ children }) => {
                 key={item.to}
                 to={item.to}
                 onClick={() => setSidebarOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
-                  active
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${active
                     ? isSOS
                       ? "bg-red-500 text-white"
                       : "bg-[#ffcd60] text-[#402763]"
                     : isSOS
                       ? "text-red-400 hover:bg-red-500/10 hover:text-red-300"
                       : "text-white/70 hover:bg-white/10 hover:text-white"
-                }`}
+                  }`}
               >
                 <Icon size={18} />
                 {item.label}

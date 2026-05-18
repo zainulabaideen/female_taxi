@@ -30,8 +30,8 @@ const DriverRates = () => {
 
       if (ratesRes.data) {
         setRates({
-          per_km_charge: ratesRes.data.per_km_charge || 0,
-          base_fare: ratesRes.data.base_fare || 0
+          per_km_charge: parseFloat(ratesRes.data.per_km_charge) || 0,
+          base_fare: parseFloat(ratesRes.data.base_fare) || 0
         });
       }
 
@@ -145,7 +145,7 @@ const DriverRates = () => {
               Fare = {rates.base_fare} + (distance × {rates.per_km_charge})
             </p>
             <p className="text-xs text-[#402763]/50 mt-2">
-              Example: For a 10 km ride: Rs. {(rates.base_fare + 10 * rates.per_km_charge).toFixed(2)}
+              Example: For a 10 km ride: Rs. {(Number(rates.base_fare) + 10 * Number(rates.per_km_charge)).toFixed(2)}
             </p>
           </div>
 

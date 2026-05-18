@@ -88,6 +88,7 @@ export const bookingAPI = {
   getMyBookings: () => api.get('/api/bookings/my'),
   getDriverBookings: () => api.get('/api/bookings/driver'),
   cancelBooking: (bookingId) => api.put(`/api/bookings/${bookingId}/cancel`),
+  closeRide: (bookingId) => api.put(`/api/bookings/${bookingId}/close`),
   updateBookingStatus: (bookingId, status) => api.put(`/api/bookings/${bookingId}/status`, { status }),
   getBookingById: (bookingId) => api.get(`/api/bookings/${bookingId}`),
 
@@ -103,6 +104,7 @@ export const reportAPI = {
   getMyReports: () => api.get('/api/reports/my'),
   triggerSOS: (data) => api.post('/api/reports/sos', data),
   getMySOS: () => api.get('/api/reports/sos/my'),
+  shareLocationWithGuardian: (data) => api.post('/api/reports/location-share', data),
 };
 
 // ─── Admin ────────────────────────────────────────────────────────────────────

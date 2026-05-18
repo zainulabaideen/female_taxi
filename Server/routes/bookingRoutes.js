@@ -9,6 +9,7 @@ router.use(verifyToken);
 router.post('/', requireRole('passenger'), bookingCtrl.createBooking);
 router.get('/my', requireRole('passenger'), bookingCtrl.getMyBookings);
 router.put('/:bookingId/cancel', requireRole('passenger'), bookingCtrl.cancelBooking);
+router.put('/:bookingId/close', requireRole('passenger'), bookingCtrl.closeRide);
 
 // Ride Offers (Bidding System)
 router.post('/offers/request', requireRole('passenger'), bookingCtrl.requestOffers);

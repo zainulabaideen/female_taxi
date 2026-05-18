@@ -17,6 +17,9 @@ const sendEmail = async ({ to, subject, html }) => {
   });
 };
 
+// Export for direct use
+exports.sendEmail = sendEmail;
+
 const adminEmail = process.env.MAIL_USER;
 
 // ── Brand header helper ──────────────────────────────────────────────────────

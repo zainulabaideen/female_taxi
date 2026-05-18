@@ -76,11 +76,19 @@ exports.deleteSlot = async (req, res) => {
 exports.getAllDrivers = async (req, res) => {
   try {
     const drivers = await Profile.getApprovedDrivers();
-    // For each driver, fetch their available sub-slots
+    // For each driver, fetch their available sub-slots and pricing
     const driversWithSlots = await Promise.all(
       drivers.map(async (driver) => {
-        const availableSubSlots = await Slot.getAvailableSubSlotsByDriverId(driver.user_id);
-        return { ...driver, availableSubSlots };
+        const [availableSubSlots, rates] = await Promise.all([
+          Slot.getAvailableSubSlotsByDriverId(driver.user_id),
+          Pricing.getDriverRates(driver.user_id).catch(() => null),
+        ]);
+        return {
+          ...driver,
+          availableSubSlots,
+          base_fare: rates?.base_fare ?? null,
+          per_km_charge: rates?.per_km_charge ?? null,
+        };
       })
     );
     res.json(driversWithSlots);

@@ -13,4 +13,7 @@ router.get('/my', reportCtrl.getMyReports);
 router.post('/sos', reportCtrl.triggerSOS);
 router.get('/sos/my', reportCtrl.getMySOS);
 
+// Live location sharing with guardian
+router.post('/location-share', reportCtrl.shareLocationWithGuardian);
+
 module.exports = router;

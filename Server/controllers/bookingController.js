@@ -123,8 +123,10 @@ exports.cancelBooking = async (req, res) => {
     }
 
     await Booking.cancelBooking(bookingId, req.user.id);
-    // Free the slot again
-    await Slot.markSlotAvailable(booking.slot_id);
+    // Free the sub-slot again so it can be rebooked
+    if (booking.sub_slot_id) {
+      await Slot.markSubSlotAvailable(booking.sub_slot_id);
+    }
     res.json({ message: "Booking cancelled" });
   } catch (err) {
     console.error("cancelBooking error:", err);
@@ -136,7 +138,8 @@ exports.cancelBooking = async (req, res) => {
 exports.updateStatus = async (req, res) => {
   const { bookingId } = req.params;
   const { status } = req.body;
-  const allowed = ['confirmed', 'in_progress', 'completed'];
+  // Driver can confirm a pending booking, start it, complete it, or cancel it
+  const allowed = ['confirmed', 'in_progress', 'completed', 'cancelled'];
 
   if (!allowed.includes(status)) {
     return res.status(400).json({ message: "Invalid status" });
@@ -147,16 +150,54 @@ exports.updateStatus = async (req, res) => {
     if (bookingRows.length === 0) return res.status(404).json({ message: "Booking not found" });
     if (bookingRows[0].driver_id != req.user.id) return res.status(403).json({ message: "Unauthorized" });
 
+    const current = bookingRows[0].status;
+
+    // Enforce valid transitions
+    const transitions = {
+      pending:     ['confirmed', 'cancelled'],
+      confirmed:   ['in_progress', 'cancelled'],
+      in_progress: ['completed'],
+      completed:   [],
+      cancelled:   [],
+    };
+    if (!transitions[current]?.includes(status)) {
+      return res.status(400).json({ message: `Cannot transition from ${current} to ${status}` });
+    }
+
     await Booking.updateBookingStatus(bookingId, status);
 
-    // If completed, free slot for future reuse
-    if (status === 'completed') {
-      await Slot.markSubSlotAvailable(bookingRows[0].sub_slot_id);
+    // If completed or cancelled, free slot for future reuse
+    if (status === 'completed' || status === 'cancelled') {
+      if (bookingRows[0].sub_slot_id) {
+        await Slot.markSubSlotAvailable(bookingRows[0].sub_slot_id);
+      }
     }
 
     res.json({ message: `Booking status updated to ${status}` });
   } catch (err) {
     console.error("updateStatus error:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+// ─── Passenger: close a completed ride ───────────────────────────────────────
+exports.closeRide = async (req, res) => {
+  const { bookingId } = req.params;
+  try {
+    const bookingRows = await Booking.getBookingById(bookingId);
+    if (bookingRows.length === 0) return res.status(404).json({ message: "Booking not found" });
+
+    const booking = bookingRows[0];
+    if (booking.passenger_id != req.user.id) return res.status(403).json({ message: "Unauthorized" });
+
+    if (booking.status !== 'in_progress') {
+      return res.status(400).json({ message: "Ride is not currently in progress" });
+    }
+
+    await Booking.updateBookingStatus(bookingId, 'completed');
+    res.json({ message: "Ride closed successfully" });
+  } catch (err) {
+    console.error("closeRide error:", err);
     res.status(500).json({ message: "Server error" });
   }
 };
