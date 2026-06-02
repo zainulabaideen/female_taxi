@@ -63,7 +63,7 @@ const SideNavbar = ({ onToggleSidebar }) => {
 
       {/* Logo — fixed at top */}
       <div className="flex justify-center py-6 flex-shrink-0 border-b border-gray-100">
-        <img src="/logo.png" alt="Alpha Enterprises" className="h-14 object-contain" />
+        <img src="/final/SheGo Final Colored Logo-01-01.png" alt="Alpha Enterprises" className="h-14 object-contain" />
       </div>
 
       {/* Scrollable menu — takes remaining height */}

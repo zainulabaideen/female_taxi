@@ -35,9 +35,12 @@ const Navbar = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2.5 group">
-           <img src="/logo.png" alt="shego" className='w-12'/>
+          <Link to="/" className="flex  items-center gap-2.5 group">
+           <img src="/final/SheGo Final Colored Logo-01-01.png" alt="shego" className='w-12 hidden md:block'/>
+           <img src="/final/SheGo Final Colored Logo-01-07.png" alt="shego" className='w-12 block md:hidden'/>
+
           </Link>
+           <img src="/final/SheGo Final Colored Logo-01-04.png" alt="shego" className='w-22 h-10 font-bold block md:hidden place-items-center'/>
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-1">

@@ -17,9 +17,9 @@ const OurStory = () => {
           <div className="lg:w-1/2 relative" data-aos="fade-right">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-[#402763]/20">
               <img
-                src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&q=80&w=900"
+                src="/ChatGPT Image May 22, 2026, 08_48_11 PM.png"
                 alt="Woman driving safely"
-                className="w-full h-[450px] object-cover"
+                className="w-full h-[450px] object-fit"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#402763]/40 to-transparent" />
             </div>

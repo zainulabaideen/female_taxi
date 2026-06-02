@@ -24,7 +24,7 @@ const DashboardNav = ({ onToggleSidebar, isOpen }) => {
 
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <img src="/logo.png" alt="Alpha Enterprises" className="h-15 object-contain" />
+          <img src="/final/SheGo Final Colored Logo-01-01.png" alt="Alpha Enterprises" className="h-15 object-contain" />
         </Link>
 
         {/* Right section */}

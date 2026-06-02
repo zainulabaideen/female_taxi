@@ -36,7 +36,7 @@ const PassengerLayout = ({ children }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-[#e1cfe6] flex">
       {/* Sidebar */}
       <aside
         className={`fixed inset-y-0 left-0 z-40 w-64 bg-[#402763] flex flex-col transition-transform duration-300 lg:translate-x-0 ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
@@ -45,10 +45,10 @@ const PassengerLayout = ({ children }) => {
         <div className="px-6 py-6 border-b border-white/10">
           <Link to="/" className="flex items-center gap-2.5">
             <div className="w-9 h-9 bg-[#ffcd60] rounded-xl flex items-center justify-center">
-              <Shield size={18} className="text-[#402763]" />
+            <img src="/final/SheGo Final Colored Logo-01-07.png" alt="shego" className='w-12'/>
             </div>
             <span className="text-xl font-black text-white">
-              SHE<span className="text-[#ffcd60]">GO</span>
+              <span className="text-[#ffcd60]">SHEGO</span>
             </span>
           </Link>
           <div className="mt-3 inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-3 py-1">
@@ -111,7 +111,7 @@ const PassengerLayout = ({ children }) => {
 
       {/* Main Content */}
       <div className="flex-1 lg:ml-64 flex flex-col min-h-screen">
-        <header className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between sticky top-0 z-20">
+        <header className="bg-[#e1cfe6] border-b border-[#402763] px-6 py-4 flex items-center justify-between sticky top-0 z-20">
           <button
             onClick={() => setSidebarOpen(true)}
             className="lg:hidden w-9 h-9 flex items-center justify-center rounded-xl text-[#402763] hover:bg-[#e1cfe6]/40"

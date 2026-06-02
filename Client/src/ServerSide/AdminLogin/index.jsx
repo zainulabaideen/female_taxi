@@ -56,7 +56,7 @@ const AdminLogin = () => {
               <Shield size={24} className="text-[#402763]" />
             </div>
             <span className="text-3xl font-black text-white tracking-tight">
-              SHE<span className="text-[#ffcd60]">GO</span>
+              <span className="text-[#ffcd60]">SHEGO</span>
             </span>
           </Link>
 
@@ -99,9 +99,9 @@ const AdminLogin = () => {
       </div>
 
       {/* Right: Form */}
-      <div className="flex-1 flex items-center justify-center p-8">
+      <div className="flex-1 flex items-center justify-center p-8 bg-[#e1cfe6]">
         <div className="w-full max-w-md">
-          <Link to="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-gray-600 mb-10 text-sm font-medium transition">
+          <Link to="/" className="inline-flex items-center gap-2 text-gray-900 hover:text-gray-600 mb-10 text-sm font-medium transition">
             <ArrowLeft size={16} /> Back to site
           </Link>
 
@@ -110,7 +110,7 @@ const AdminLogin = () => {
             <div className="w-10 h-10 bg-[#402763] rounded-xl flex items-center justify-center">
               <Shield size={18} className="text-[#ffcd60]" />
             </div>
-            <span className="text-2xl font-black text-[#402763]">SHE<span className="text-[#ffcd60]">GO</span></span>
+            <span className="text-2xl font-black text-[#402763]">SHEGO<span className="text-[#ffcd60]"></span></span>
           </div>
 
           <div className="mb-8">

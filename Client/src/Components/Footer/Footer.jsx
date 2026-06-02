@@ -13,7 +13,7 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-5">
-             <img src="/logo.png" alt="SHEGO Logo" className="w-18 object-contain" />
+             <img src="/final/SheGo Final Colored Logo-01-01.png" alt="SHEGO Logo" className="w-18 object-contain" />
             </Link>
             <p className="text-[#402763]/70 text-sm leading-relaxed mb-6">
               Safe, reliable, and empowering rides for women — by women. Your safety is our top priority, every single trip.
@@ -67,9 +67,9 @@ const Footer = () => {
             <ul className="space-y-3">
               {[
                 { label: 'Book a Ride', to: '/signup' },
-                { label: 'Become a Caption', to: '/signup' },
+                { label: 'Become a captain', to: '/signup' },
                 { label: 'Passenger Dashboard', to: '/' }, // /dashboard/passenger
-                { label: 'Caption Dashboard', to: '/' }, // /dashboard/driver
+                { label: 'captain Dashboard', to: '/' }, // /dashboard/driver
                 { label: 'SOS Emergency', to: '/safety' },
                 { label: 'Privacy Policy', to: '#' },
               ].map((link, i) => (

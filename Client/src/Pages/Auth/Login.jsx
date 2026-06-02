@@ -74,7 +74,7 @@ const Login = () => {
       <div className="flex-1 flex items-center justify-center p-8 bg-[#e1cfe6]">
         <div className="w-full max-w-md">
           <Link to="/" className="flex items-center gap-2 mb-8 lg:hidden">
-            <img src="/logo.png" alt="shego" className='w-18 mx-auto' />
+            <img src="/final/SheGo Final Colored Logo-01-01.png" alt="shego" className='w-18 mx-auto' />
           </Link>
 
           <div className='flex gap-3 items-center mb-2'>
