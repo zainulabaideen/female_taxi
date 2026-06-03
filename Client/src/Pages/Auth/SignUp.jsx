@@ -98,7 +98,7 @@ const SignUp = () => {
     <main className="min-h-screen flex items-center justify-center bg-[#e1cfe6] py-12 px-6">
       <div className="w-full max-w-2xl">
         <Link to="/" className="flex items-center justify-center gap-2 mb-8">
-          <img src="/logo.png" alt="shego" className='md:w-18 w-12' />
+          <img src="/final/SheGo Final Colored Logo-01-01.png" alt="shego" className='md:w-18 w-12' />
         </Link>
 
         {/* Progress Bar */}

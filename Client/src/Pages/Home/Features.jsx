@@ -19,8 +19,8 @@ const features = [
   },
   {
     icon: Users,
-    title: 'Verified caption',
-    desc: 'Every caption goes through a thorough background and license verification.',
+    title: 'Verified captain',
+    desc: 'Every captain goes through a thorough background and license verification.',
   },
   {
     icon: Bell,
@@ -30,7 +30,7 @@ const features = [
   {
     icon: Star,
     title: 'Rate Your Ride',
-    desc: 'Leave honest reviews. Your feedback keeps our caption quality high.',
+    desc: 'Leave honest reviews. Your feedback keeps our captain quality high.',
   },
 ];
 
