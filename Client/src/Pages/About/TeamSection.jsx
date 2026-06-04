@@ -51,18 +51,18 @@ const TeamSection = () => {
               </div>
 
               <h3 className="font-bold text-[#402763]/60 text-lg mb-1">{member.name}</h3>
-              <div className="text-[#402763] text-xs font-bold uppercase tracking-wide mb-3">{member.role}</div>
+              {/* <div className="text-[#402763] text-xs font-bold uppercase tracking-wide mb-3">{member.role}</div> */}
               <p className="text-[#402763]/60 text-sm leading-relaxed mb-5">{member.bio}</p>
 
               {/* Social Links */}
-              <div className="flex justify-center gap-3">
+              {/* <div className="flex justify-center gap-3">
                 <a href="#" className="w-8 h-8 rounded-full border border-[#e1cfe6] flex items-center justify-center text-[#402763]/50 hover:bg-[#402763] hover:text-white hover:border-[#402763] transition-all">
                   <Linkedin size={13} />
                 </a>
                 <a href="#" className="w-8 h-8 rounded-full border border-[#e1cfe6] flex items-center justify-center text-[#402763]/50 hover:bg-[#402763] hover:text-white hover:border-[#402763] transition-all">
                   <Twitter size={13} />
                 </a>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
