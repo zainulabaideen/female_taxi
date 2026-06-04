@@ -75,7 +75,7 @@ const Hero = () => {
               {/* Main Image Card */}
               <div className="w-full h-[320px] sm:h-[380px] lg:h-[480px] rounded-[2.5rem] overflow-hidden border-4 border-white/20 shadow-2xl shadow-black/40">
                 <img
-                  src="/hero-driver.png"
+                  src="/hero-driver.webp"
                   alt="Verified Female Ride Driver — SHEGO"
                   className="w-full h-full object-cover object-top"
                 />

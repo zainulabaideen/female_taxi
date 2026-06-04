@@ -17,16 +17,16 @@ const OurStory = () => {
           <div className="lg:w-1/2 relative" data-aos="fade-right">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-[#402763]/20">
               <img
-                src="/ChatGPT Image May 22, 2026, 08_48_11 PM.png"
+                src="/ChatGPT Image May 22, 2026, 08_48_11 PM.webp"
                 alt="Woman driving safely"
-                className="w-full h-[450px] object-fit"
+                className="w-full md:h-[450px] object-contain md:object-cover "
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#402763]/40 to-transparent" />
             </div>
             {/* Floating stat */}
-            <div className="absolute -right-6 -bottom-6 bg-white border border-[#e1cfe6] rounded-2xl p-5 shadow-xl">
-              <div className="text-3xl font-black text-[#402763]">2023</div>
-              <div className="text-sm text-[#402763]/60 font-medium">Year Founded</div>
+            <div className="absolute -right-6 -bottom-6 bg-white border border-[#e1cfe6] rounded-2xl p-2 md:p-5 shadow-xl">
+              <div className="text-xl md:text-3xl font-black text-[#402763]">2023</div>
+              <div className="text-xs md:text-sm text-[#402763]/60 font-medium">Year Founded</div>
             </div>
           </div>
 
