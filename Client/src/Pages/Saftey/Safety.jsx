@@ -279,7 +279,7 @@ const Safety = () => {
                     <span className="text-red-500 text-xs font-black tracking-widest uppercase">Emergency Active</span>
                   </div>
 
-                  <div className="my-auto">
+                  <div className=" my-auto w-full flex-col flex justify-center items-center mx-auto">
                     <div className="w-28 h-28 bg-red-500/10 rounded-full flex items-center justify-center animate-ping" style={{ animationDuration: '2.5s' }}>
                       <div className="absolute w-24 h-24 bg-red-500/20 rounded-full flex items-center justify-center">
                         <div className="w-18 h-18 bg-red-500 rounded-full flex items-center justify-center shadow-lg shadow-red-500/50 cursor-pointer">
