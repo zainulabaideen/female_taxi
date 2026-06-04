@@ -35,7 +35,7 @@ const OurStory = () => {
             <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-3">Our Story</p>
             <h2 className="text-4xl font-black text-[#402763] mb-6 leading-tight">
             HER JOURNEY 
-              <br />ON HER OWN TERMS
+``              <br />ON HER OWN TERMS
             </h2>
             <p className="text-[#402763]/70 leading-relaxed mb-5">
               SHEGO was founded when our team realized that women across Pakistan faced daily challenges while commuting — from harassment to feeling unsafe in late hours.
