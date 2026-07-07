@@ -26,21 +26,20 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/95 backdrop-blur-xl shadow-lg shadow-[#402763]/5 border-b border-[#e1cfe6]/50'
-          : 'bg-white/80 backdrop-blur-md border-b border-[#e1cfe6]/30'
-      }`}
+      className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
+        ? 'bg-white/95 backdrop-blur-xl shadow-lg shadow-[#402763]/5 border-b border-[#e1cfe6]/50'
+        : 'bg-white/80 backdrop-blur-md border-b border-[#e1cfe6]/30'
+        }`}
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex  items-center gap-2.5 group">
-           <img src="/final/SheGo Final Colored Logo-01-01.png" alt="shego" className='w-12 hidden md:block'/>
-           <img src="/final/SheGo Final Colored Logo-01-07.png" alt="shego" className='w-12 block md:hidden'/>
+            <img src="logo.png" alt="shego" className='w-16 hidden md:block' />
+            <img src="logo.png" alt="shego" className='w-16 block md:hidden' />
 
           </Link>
-           <img src="/final/SheGo Final Colored Logo-01-04.png" alt="shego" className='w-22 h-10 font-bold block md:hidden place-items-center'/>
+          {/* <img src="logo.png" alt="shego" className='w-22 h-10 font-bold block md:hidden place-items-center' /> */}
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-1">
@@ -48,11 +47,10 @@ const Navbar = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
-                  pathname === link.to
-                    ? 'text-[#402763] bg-[#e1cfe6]'
-                    : 'text-[#402763]/70 hover:text-[#402763] hover:bg-[#e1cfe6]/40'
-                }`}
+                className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${pathname === link.to
+                  ? 'text-[#402763] bg-[#e1cfe6]'
+                  : 'text-[#402763]/70 hover:text-[#402763] hover:bg-[#e1cfe6]/40'
+                  }`}
               >
                 {link.label}
               </Link>
@@ -88,9 +86,8 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
+        className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          }`}
       >
         <div className="container mx-auto px-6 pb-5 pt-2 border-t border-[#e1cfe6]/40 bg-white/98">
           <div className="flex flex-col gap-1 mb-4">
@@ -98,11 +95,10 @@ const Navbar = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`px-4 py-3 rounded-xl text-sm font-semibold transition-all ${
-                  pathname === link.to
-                    ? 'text-[#402763] bg-[#e1cfe6]/60'
-                    : 'text-[#402763]/70 hover:text-[#402763] hover:bg-[#e1cfe6]/30'
-                }`}
+                className={`px-4 py-3 rounded-xl text-sm font-semibold transition-all ${pathname === link.to
+                  ? 'text-[#402763] bg-[#e1cfe6]/60'
+                  : 'text-[#402763]/70 hover:text-[#402763] hover:bg-[#e1cfe6]/30'
+                  }`}
               >
                 {link.label}
               </Link>

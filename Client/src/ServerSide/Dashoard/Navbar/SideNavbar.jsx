@@ -38,8 +38,8 @@ export const SideNavbar = ({ onToggleSidebar }) => {
 
 
   const Menu = [
-   
-      {
+
+    {
       title: "Orders",
       icon: <MessageSquare />,
     },

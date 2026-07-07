@@ -40,8 +40,7 @@ const Login = () => {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#ffcd60]/10 rounded-full blur-3xl" />
 
         <Link to="/" className="flex items-center gap-2.5 relative z-10">
-          <img src="/logo colors/logo colors/SheGo Colored Logo-01-09.png" alt="shego" className='w-16' />
-          <span className="text-4xl font-black text-[#ffcd60] tracking-tight">SHEGO</span>
+          <img src="logo2.png" alt="shego" className='w-20' />
         </Link>
 
         <div className="relative z-10">
@@ -74,7 +73,7 @@ const Login = () => {
       <div className="flex-1 flex items-center justify-center p-8 bg-[#e1cfe6]">
         <div className="w-full max-w-md">
           <Link to="/" className="flex items-center gap-2 mb-8 lg:hidden">
-            <img src="/final/SheGo Final Colored Logo-01-01.png" alt="shego" className='w-18 mx-auto' />
+            <img src="logo.png" alt="shego" className='w-18 mx-auto' />
           </Link>
 
           <div className='flex gap-3 items-center mb-2'>
@@ -160,7 +159,7 @@ const Login = () => {
 
           <p className="text-center text-xs text-[#402763]/50 mt-4">
             By signing in, you agree to our{' '}
-        
+
             <Link to="/privacy-policy" className="underline hover:text-[#402763]">Privacy Policy</Link>.
           </p>
         </div>

@@ -98,7 +98,7 @@ const SignUp = () => {
     <main className="min-h-screen flex items-center justify-center bg-[#e1cfe6] py-12 px-6">
       <div className="w-full max-w-2xl">
         <Link to="/" className="flex flex-col items-center justify-center gap-2 mb-8">
-          <img src="/final/SheGo Final Colored Logo-01-01.png" alt="shego" className='md:w-18 w-12' />
+          <img src="logo.png" alt="shego" className='md:w-18 w-12' />
           <span className="text-xs font-black text-[#402763] uppercase tracking-widest bg-[#ede0f2] px-3.5 py-1 rounded-full mt-2 border border-[#402763]/10">SHEGO: The Feminine Rights</span>
         </Link>
 
@@ -107,11 +107,10 @@ const SignUp = () => {
           {progressSteps.map((s, i) => (
             <React.Fragment key={i}>
               <div className="flex items-center gap-2">
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black transition-all ${
-                  step > i + 1 ? 'bg-[#402763] text-white' :
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black transition-all ${step > i + 1 ? 'bg-[#402763] text-white' :
                   step === i + 1 ? 'bg-[#ffcd60] text-[#402763]' :
-                  'bg-[#e1cfe6] text-[#402763]/40'
-                }`}>
+                    'bg-[#e1cfe6] text-[#402763]/40'
+                  }`}>
                   {step > i + 1 ? '✓' : i + 1}
                 </div>
                 <span className={`text-xs font-semibold hidden sm:block ${step === i + 1 ? 'text-[#402763]' : 'text-[#402763]/40'}`}>{s}</span>
@@ -137,9 +136,8 @@ const SignUp = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
                 <button
                   onClick={() => setRole('passenger')}
-                  className={`relative text-left p-6 rounded-2xl border-2 transition-all duration-200 group ${
-                    role === 'passenger' ? 'border-[#402763] bg-[#402763]/5 shadow-lg' : 'border-[#e1cfe6] hover:border-[#402763]/30 hover:shadow-md'
-                  }`}
+                  className={`relative text-left p-6 rounded-2xl border-2 transition-all duration-200 group ${role === 'passenger' ? 'border-[#402763] bg-[#402763]/5 shadow-lg' : 'border-[#e1cfe6] hover:border-[#402763]/30 hover:shadow-md'
+                    }`}
                 >
                   {role === 'passenger' && (
                     <div className="absolute top-3 right-3 w-5 h-5 bg-[#402763] rounded-full flex items-center justify-center">
@@ -155,9 +153,8 @@ const SignUp = () => {
 
                 <button
                   onClick={() => setRole('driver')}
-                  className={`relative text-left p-6 rounded-2xl border-2 transition-all duration-200 ${
-                    role === 'driver' ? 'border-[#402763] bg-[#402763]/5 shadow-lg' : 'border-[#e1cfe6] hover:border-[#402763]/30 hover:shadow-md'
-                  }`}
+                  className={`relative text-left p-6 rounded-2xl border-2 transition-all duration-200 ${role === 'driver' ? 'border-[#402763] bg-[#402763]/5 shadow-lg' : 'border-[#e1cfe6] hover:border-[#402763]/30 hover:shadow-md'
+                    }`}
                 >
                   {role === 'driver' && (
                     <div className="absolute top-3 right-3 w-5 h-5 bg-[#402763] rounded-full flex items-center justify-center">

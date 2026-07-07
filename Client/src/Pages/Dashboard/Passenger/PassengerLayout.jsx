@@ -44,12 +44,10 @@ const PassengerLayout = ({ children }) => {
         {/* Logo */}
         <div className="px-6 py-6 border-b border-white/10">
           <Link to="/" className="flex items-center gap-2.5">
-            <div className="w-9 h-9 bg-[#ffcd60] rounded-xl flex items-center justify-center">
-            <img src="/final/SheGo Final Colored Logo-01-07.png" alt="shego" className='w-12'/>
-            </div>
-            <span className="text-xl font-black text-white">
-              <span className="text-[#ffcd60]">SHEGO</span>
-            </span>
+            {/* <div className="w-9 h-9 bg-[#ffcd60] rounded-xl flex items-center justify-center"> */}
+              <img src="/logo2.png" alt="shego" className='w-20' />
+            {/* </div> */}
+         
           </Link>
           <div className="mt-3 inline-flex items-center gap-1.5 bg-white/10 border border-white/20 rounded-full px-3 py-1">
             <User size={11} className="text-[#e1cfe6]" />
@@ -71,12 +69,12 @@ const PassengerLayout = ({ children }) => {
                 to={item.to}
                 onClick={() => setSidebarOpen(false)}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold transition-all ${active
-                    ? isSOS
-                      ? "bg-red-500 text-white"
-                      : "bg-[#ffcd60] text-[#402763]"
-                    : isSOS
-                      ? "text-red-400 hover:bg-red-500/10 hover:text-red-300"
-                      : "text-white/70 hover:bg-white/10 hover:text-white"
+                  ? isSOS
+                    ? "bg-red-500 text-white"
+                    : "bg-[#ffcd60] text-[#402763]"
+                  : isSOS
+                    ? "text-red-400 hover:bg-red-500/10 hover:text-red-300"
+                    : "text-white/70 hover:bg-white/10 hover:text-white"
                   }`}
               >
                 <Icon size={18} />

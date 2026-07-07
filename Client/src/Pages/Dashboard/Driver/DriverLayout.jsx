@@ -39,14 +39,14 @@ const DriverLayout = ({ children }) => {
       >
         {/* Logo */}
         <div className="px-6 py-7 border-b border-white/10">
-          <Link to="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#ffcd60] to-[#ffa500] rounded-2xl flex items-center justify-center shadow-lg">
-              <Shield size={20} className="text-[#402763]" />
-            </div>
-            <span className="text-2xl font-black text-white tracking-tight">
-              SHE<span className="text-[#ffcd60]">GO</span>
-            </span>
-          </Link>
+ 
+              <Link to="/" className="flex items-center gap-2.5">
+                        {/* <div className="w-9 h-9 bg-[#ffcd60] rounded-xl flex items-center justify-center"> */}
+                          <img src="/logo2.png" alt="shego" className='w-20' />
+                        {/* </div> */}
+                     
+                      </Link>
+        
           <div className="mt-4 flex items-center gap-2.5 bg-[#ffcd60]/15 border border-[#ffcd60]/25 rounded-2xl px-3 py-2">
             <div className="w-7 h-7 bg-[#ffcd60] rounded-lg flex items-center justify-center flex-shrink-0">
               <Car size={14} className="text-[#402763]" />

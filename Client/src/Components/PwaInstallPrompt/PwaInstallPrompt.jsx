@@ -92,7 +92,7 @@ const PwaInstallPrompt = () => {
         <div className="flex gap-4 items-start max-w-md mx-auto">
           <div className="w-12 h-12 bg-[#ffcd60] rounded-2xl flex items-center justify-center shrink-0 shadow-lg">
             <img
-              src="/final/SheGo Final Colored Logo-01-01.png"
+              src="logo.png"
               alt="SHEGO"
               className="w-8 object-contain"
             />
@@ -139,7 +139,7 @@ const PwaInstallPrompt = () => {
           {/* App Icon */}
           <div className="w-12 h-12 bg-[#ffcd60] rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-[#ffcd60]/20">
             <img
-              src="/final/SheGo Final Colored Logo-01-01.png"
+              src="logo.png"
               alt="SHEGO"
               className="w-8 object-contain"
             />
