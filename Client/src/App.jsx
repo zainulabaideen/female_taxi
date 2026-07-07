@@ -12,6 +12,7 @@ import DriverDashboard from "./Pages/Dashboard/Driver/DriverDashboard";
 import PassengerDashboard from "./Pages/Dashboard/Passenger/PassengerDashboard";
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
+import PwaInstallPrompt from "./Components/PwaInstallPrompt/PwaInstallPrompt";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "./context/AuthContext";
@@ -101,6 +102,8 @@ function App() {
       </Routes>
 
       {!hideLayout && <Footer />}
+
+      <PwaInstallPrompt />
 
       <ToastContainer
         position="top-right"
