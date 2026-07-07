@@ -19,7 +19,7 @@ const OurStory = () => {
               <img
                 src="/ChatGPT Image May 22, 2026, 08_48_11 PM.webp"
                 alt="Woman driving safely"
-                className="w-full md:h-[450px] object-contain md:object-cover "
+                className="w-full h-auto md:h-[450px] object-contain md:object-cover "
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#402763]/40 to-transparent" />
             </div>

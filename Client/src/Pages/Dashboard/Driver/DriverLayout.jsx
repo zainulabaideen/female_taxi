@@ -114,7 +114,7 @@ const DriverLayout = ({ children }) => {
       )}
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col min-h-screen" style={{ marginLeft: '270px' }}>
+      <div className="flex-1 lg:ml-[270px] flex flex-col min-h-screen">
         {/* Top Bar */}
         <header className="bg-white/80 backdrop-blur-md border-b border-[#e1cfe6]/50 px-6 py-4 flex items-center justify-between sticky top-0 z-20 shadow-sm">
           <button

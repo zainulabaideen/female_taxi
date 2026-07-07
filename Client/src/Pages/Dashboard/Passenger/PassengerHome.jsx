@@ -134,7 +134,7 @@ const PassengerHome = () => {
       )}
 
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-3 gap-2 md:gap-4">
         {[
           { icon: CheckCircle, label: "Completed", value: completedRides, bg: "from-green-50 to-green-100", border: "border-green-200", icon_bg: "bg-green-500", text: "text-green-700" },
           { icon: Clock, label: "Upcoming", value: upcomingRides, bg: "from-blue-50 to-blue-100", border: "border-blue-200", icon_bg: "bg-blue-500", text: "text-blue-700" },

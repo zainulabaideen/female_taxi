@@ -5,6 +5,7 @@ import PassengerHome from "./PassengerHome";
 import DriversList from "./DriversList";
 import EmergencyButton from "./EmergencyButton";
 import PassengerProfile from "./PassengerProfile";
+import PassengerBookings from "./PassengerBookings";
 
 const PassengerDashboard = () => {
   return (
@@ -12,6 +13,7 @@ const PassengerDashboard = () => {
       <Routes>
         <Route index element={<PassengerHome />} />
         <Route path="drivers" element={<DriversList />} />
+        <Route path="bookings" element={<PassengerBookings />} />
         <Route path="emergency" element={<EmergencyButton />} />
         <Route path="profile" element={<PassengerProfile />} />
       </Routes>
