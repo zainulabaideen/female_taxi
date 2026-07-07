@@ -444,9 +444,9 @@ const Safety = () => {
 
       {/* Call to Action Section */}
       <section className="bg-gradient-to-br from-[#402763] to-[#2d1949] text-center py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: `radial-gradient(circle, #fff 1px, transparent 1px)`, backgroundSize: '24px 24px' }} />
+        <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: `radial-gradient(circle, #ede0f2 1px, transparent 1px)`, backgroundSize: '24px 24px' }} />
         <div className="container mx-auto px-6 relative z-10" data-aos="zoom-in">
-          <h2 className="text-3xl lg:text-5xl font-black text-white mb-6">Experience Secure Travel Today</h2>
+          <h2 className="text-3xl lg:text-5xl font-black text-[#ede0f2] mb-6">Experience Secure Travel Today</h2>
           <p className="text-[#e1cfe6]/80 text-lg max-w-xl mx-auto mb-10">
             Sign up now and join thousands of women who commute securely every single day with SHEGO.
           </p>
@@ -459,7 +459,7 @@ const Safety = () => {
             </a>
             <a 
               href="/signup?role=driver" 
-              className="px-8 py-4 bg-white/10 text-white font-bold rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300"
+              className="px-8 py-4 bg-white/10 text-[#ede0f2] font-bold rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300"
             >
               Apply as Captain
             </a>
