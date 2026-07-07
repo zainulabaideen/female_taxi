@@ -17,7 +17,7 @@ const AboutHero = () => {
           <span className="text-[#ffcd60] text-xs font-bold tracking-widest uppercase">Our Story</span>
         </div>
         <h1 className="text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-          EDriven by Her,
+          Driven by Her,
           <br />
           <span className="text-[#ffcd60]"> for Her</span>
         </h1>

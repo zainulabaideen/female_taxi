@@ -97,8 +97,9 @@ const SignUp = () => {
   return (
     <main className="min-h-screen flex items-center justify-center bg-[#e1cfe6] py-12 px-6">
       <div className="w-full max-w-2xl">
-        <Link to="/" className="flex items-center justify-center gap-2 mb-8">
+        <Link to="/" className="flex flex-col items-center justify-center gap-2 mb-8">
           <img src="/final/SheGo Final Colored Logo-01-01.png" alt="shego" className='md:w-18 w-12' />
+          <span className="text-xs font-black text-[#402763] uppercase tracking-widest bg-[#ede0f2] px-3.5 py-1 rounded-full mt-2 border border-[#402763]/10">SHEGO: The Feminine Rights</span>
         </Link>
 
         {/* Progress Bar */}
@@ -287,7 +288,7 @@ const SignUp = () => {
                     <div className="space-y-4">
                       <div>
                         <label className="block text-xs font-semibold text-[#402763] mb-1.5">Contact Name</label>
-                        <input type="text" name="emergencyName" value={form.emergencyName} onChange={handleChange} required placeholder="e.g. Ammi / Abbu"
+                        <input type="text" name="emergencyName" value={form.emergencyName} onChange={handleChange} required placeholder="e.g. Mother / Father"
                           className="w-full px-4 py-3 rounded-xl border border-[#e1cfe6] bg-white text-[#402763] placeholder-[#402763]/30 focus:outline-none focus:border-[#402763] focus:ring-2 focus:ring-[#402763]/10 transition text-sm" />
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -356,26 +357,46 @@ const SignUp = () => {
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-semibold text-amber-700 mb-2">CNIC Front Side</label>
+                        <label className="block text-xs font-semibold text-amber-700 mb-1">CNIC Front Side</label>
+                        <span className="block text-[10px] text-amber-600 mb-2">(Max size: 1MB. Required format: PNG, JPG, WEBP)</span>
                         <input
                           type="file"
                           accept="image/jpeg,image/png,image/webp"
                           required
-                          onChange={(e) => setCnicFront(e.target.files[0])}
+                          onChange={(e) => {
+                            const file = e.target.files[0];
+                            if (file && file.size > 1024 * 1024) {
+                              toast.error('CNIC Front image size must not exceed 1MB');
+                              e.target.value = null;
+                              setCnicFront(null);
+                            } else {
+                              setCnicFront(file);
+                            }
+                          }}
                           className="w-full text-sm text-amber-800 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-amber-100 file:text-amber-700 hover:file:bg-amber-200 transition cursor-pointer"
                         />
-                        {cnicFront && <p className="text-xs text-green-600 mt-1">✓ {cnicFront.name}</p>}
+                        {cnicFront && <p className="text-xs text-green-600 mt-1">✓ {cnicFront.name} ({(cnicFront.size / 1024 / 1024).toFixed(2)} MB)</p>}
                       </div>
                       <div>
-                        <label className="block text-xs font-semibold text-amber-700 mb-2">CNIC Back Side</label>
+                        <label className="block text-xs font-semibold text-amber-700 mb-1">CNIC Back Side</label>
+                        <span className="block text-[10px] text-amber-600 mb-2">(Max size: 1MB. Required format: PNG, JPG, WEBP)</span>
                         <input
                           type="file"
                           accept="image/jpeg,image/png,image/webp"
                           required
-                          onChange={(e) => setCnicBack(e.target.files[0])}
+                          onChange={(e) => {
+                            const file = e.target.files[0];
+                            if (file && file.size > 1024 * 1024) {
+                              toast.error('CNIC Back image size must not exceed 1MB');
+                              e.target.value = null;
+                              setCnicBack(null);
+                            } else {
+                              setCnicBack(file);
+                            }
+                          }}
                           className="w-full text-sm text-amber-800 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-amber-100 file:text-amber-700 hover:file:bg-amber-200 transition cursor-pointer"
                         />
-                        {cnicBack && <p className="text-xs text-green-600 mt-1">✓ {cnicBack.name}</p>}
+                        {cnicBack && <p className="text-xs text-green-600 mt-1">✓ {cnicBack.name} ({(cnicBack.size / 1024 / 1024).toFixed(2)} MB)</p>}
                       </div>
                     </div>
                   </div>

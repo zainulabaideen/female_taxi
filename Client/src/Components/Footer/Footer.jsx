@@ -67,11 +67,11 @@ const Footer = () => {
             <ul className="space-y-3">
               {[
                 { label: 'Book a Ride', to: '/signup' },
-                { label: 'Become a captain', to: '/signup' },
-                { label: 'Passenger Dashboard', to: '/' }, // /dashboard/passenger
-                { label: 'captain Dashboard', to: '/' }, // /dashboard/driver
+                { label: 'Become a Captain', to: '/signup' },
+                { label: 'Passenger Dashboard', to: '/dashboard/passenger' },
+                { label: 'Captain Dashboard', to: '/dashboard/driver' },
                 { label: 'SOS Emergency', to: '/safety' },
-                { label: 'Privacy Policy', to: '#' },
+                { label: 'Privacy Policy', to: '/privacy-policy' },
               ].map((link, i) => (
                 <li key={i}>
                   <Link
@@ -95,7 +95,7 @@ const Footer = () => {
                   <MapPin size={15} className="text-[#402763]" />
                 </div>
                 <span className="text-[#402763]/70 text-sm leading-relaxed">
-                  123 Women's Safety Blvd,<br />Lahore, Pakistan
+                  Raya, DHA Phase 6,<br />Lahore, Pakistan
                 </span>
               </li>
               <li className="flex items-center gap-3">

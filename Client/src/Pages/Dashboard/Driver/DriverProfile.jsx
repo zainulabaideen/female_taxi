@@ -70,10 +70,17 @@ const DriverProfile = () => {
   return (
     <div className="space-y-6 max-w-4xl">
       <div>
-        <h1 className="text-2xl font-black text-[#402763] mb-1">My Profile</h1>
-        <p className="text-[#402763]/60 text-sm">
-          Manage your captain profile and vehicle details.
-        </p>
+        <div className="flex items-center justify-between gap-4 flex-wrap">
+          <div>
+            <h1 className="text-2xl font-black text-[#402763] mb-1">My Profile</h1>
+            <p className="text-[#402763]/60 text-sm">
+              Manage your captain profile and vehicle details.
+            </p>
+          </div>
+          <span className="text-xs font-black text-[#402763] uppercase tracking-widest bg-[#ede0f2] px-3.5 py-1.5 rounded-full border border-[#402763]/10">
+            SHEGO: The Feminine Rights
+          </span>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

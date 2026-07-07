@@ -152,17 +152,16 @@ const Login = () => {
             <div className="flex-1 h-px bg-[#402763]/20" />
           </div>
 
-          <div className="text-center">
+          {/* <div className="text-center">
             <Link to="/admin/login" className="text-xs text-[#402763]/50 hover:text-[#402763] underline underline-offset-2 font-medium">
               Admin Login →
             </Link>
-          </div>
+          </div> */}
 
           <p className="text-center text-xs text-[#402763]/50 mt-4">
             By signing in, you agree to our{' '}
-            <a href="#" className="underline hover:text-[#402763]">Terms of Service</a>
-            {' '}and{' '}
-            <a href="#" className="underline hover:text-[#402763]">Privacy Policy</a>.
+        
+            <Link to="/privacy-policy" className="underline hover:text-[#402763]">Privacy Policy</Link>.
           </p>
         </div>
       </div>

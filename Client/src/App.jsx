@@ -4,6 +4,7 @@ import Home from "./Pages/Home/Home";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
 import Safety from "./Pages/Saftey/Safety";
+import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import Login from "./Pages/Auth/Login";
 import SignUp from "./Pages/Auth/SignUp";
 import RoleSelect from "./Pages/RoleSelect/RoleSelect";
@@ -60,6 +61,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/safety" element={<Safety />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
         {/* Auth */}
         <Route path="/login" element={<Login />} />

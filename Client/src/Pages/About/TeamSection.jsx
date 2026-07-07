@@ -29,13 +29,19 @@ const TeamSection = () => {
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16" data-aos="fade-up">
-          <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-3">The Team</p>
+       
+            <div className="text-center mb-16" data-aos="fade-up">
+          <p className="text-[#402763] font-bold uppercase tracking-widest text-sm mb-3 flex items-center justify-center gap-2">
+            <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full" />
+            The Team
+            <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full" />
+          </p>
           <h2 className="text-4xl font-black text-[#402763] mb-4">Powered by Women, Driven by Women</h2>
           <p className="text-[#402763]/60 max-w-xl mx-auto">
             Our leadership team is made up of passionate women who understand the challenges firsthand.
           </p>
         </div>
+         
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {team.map((member, i) => (

@@ -37,9 +37,14 @@ const OurValues = () => {
     <section className="py-24 bg-[#e1cfe6]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16" data-aos="fade-up">
-          <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-3">What Drives Us</p>
-          <h2 className="text-4xl font-black text-[#402763] mb-4">Our Core Values</h2>
-          <p className="text-[#402763]/60 max-w-xl mx-auto">
+           
+          <p className="text-[#402763] font-bold uppercase tracking-widest text-sm mb-2 flex items-center justify-center gap-2">
+            <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full"></span>
+            What Drives Us
+            <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full"></span>
+          </p>
+          <h2 className="text-4xl font-black text-[#402763]">Our Core Values</h2>
+          <p className="text-[#402763]/60 pt-4 max-w-xl mx-auto">
             The principles that guide every decision, every feature, and every ride at SHEGO.
           </p>
         </div>

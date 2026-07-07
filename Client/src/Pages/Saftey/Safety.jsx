@@ -39,22 +39,22 @@ const Safety = () => {
 
   const safetyFeatures = [
     {
-      icon: <Lock className="text-[#402763]" size={24} />,
+      icon: <Lock className="text-white" size={24} />,
       title: "Number Masking",
       desc: "Your personal contact number is never shared. All in-app calls are routed securely through masked lines."
     },
     {
-      icon: <Share2 className="text-[#402763]" size={24} />,
+      icon: <Share2 className="text-white" size={24} />,
       title: "Share Journey Status",
       desc: "Send a live tracking link to friends or family with one tap, allowing them to follow your route in real-time."
     },
     {
-      icon: <Eye className="text-[#402763]" size={24} />,
+      icon: <Eye className="text-white" size={24} />,
       title: "Geofence Monitoring",
       desc: "Our automated dispatch system alerts safety teams if a vehicle deviates from the recommended route."
     },
     {
-      icon: <ShieldCheck className="text-[#402763]" size={24} />,
+      icon: <ShieldCheck className="text-white" size={24} />,
       title: "Safe-zone Pickups",
       desc: "Captains are trained to only drop off passengers in well-lit, secure locations when riding at night."
     }
@@ -107,7 +107,7 @@ const Safety = () => {
   ];
 
   return (
-    <div className="bg-slate-50 min-h-screen text-[#402763]">
+    <div className="bg-white min-h-screen text-[#402763]">
       {/* Premium Hero Banner */}
       <section className="relative bg-gradient-to-br from-[#402763] to-[#2d1949] py-28 overflow-hidden">
         {/* Decorative Grid Pattern */}
@@ -136,20 +136,20 @@ const Safety = () => {
         {/* Curved SVG Wave Separator */}
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 50L1440 50L1440 20C1080 50 360 0 0 20L0 50Z" fill="#f8fafc" />
+            <path d="M0 50L1440 50L1440 20C1080 50 360 0 0 20L0 50Z" fill="#ffffff" />
           </svg>
         </div>
       </section>
 
       {/* Safety Stats Section */}
-      <section className="container mx-auto px-6 -mt-10 relative z-20">
-        <div className="bg-white rounded-3xl border border-[#e1cfe6]/60 shadow-xl p-8 lg:p-10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-[#e1cfe6]/60 text-center">
+      <section className="container mx-auto px-6 mt-10 relative z-20">
+        <div className="bg-[#ede0f2] rounded-3xl border border-[#402763]/10 shadow-lg p-8 lg:p-10">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-[#402763]/15 text-center">
             {safetyStats.map((stat, i) => (
               <div key={i} className="pt-6 md:pt-0 md:px-4 first:pt-0" data-aos="fade-up" data-aos-delay={i * 100}>
                 <div className="text-4xl lg:text-5xl font-black text-[#402763] mb-1">{stat.value}</div>
                 <div className="text-sm font-bold text-[#ffcd60] uppercase tracking-wide mb-1">{stat.label}</div>
-                <div className="text-xs text-[#402763]/60">{stat.desc}</div>
+                <div className="text-xs text-[#402763]/70">{stat.desc}</div>
               </div>
             ))}
           </div>
@@ -159,22 +159,32 @@ const Safety = () => {
       {/* Two Pillars: Passenger & Captain Safety */}
       <section className="container mx-auto px-6 py-24">
         <div className="text-center mb-16" data-aos="fade-up">
-          <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-3">Our Two-Way Shield</p>
-          <h2 className="text-3xl lg:text-4xl font-black text-[#402763]">Protection for Everyone</h2>
-          <p className="text-[#402763]/60 max-w-xl mx-auto mt-4">We create a secure ecosystem where passengers feel comfortable and captains feel respected and safe.</p>
+          <p className="text-[#402763] font-bold uppercase tracking-widest text-sm mb-3 flex items-center justify-center gap-2">
+            <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full" />
+            Our Two-Way Shield
+            <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full" />
+          </p>
+          <h2 className="text-4xl font-black text-[#402763] mb-4">Protection for Everyone</h2>
+          <p className="text-[#402763]/60 max-w-xl mx-auto">
+            We create a secure ecosystem where passengers feel comfortable and captains feel respected and safe.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Passenger Safety Card */}
-          <div className="bg-white rounded-4xl border border-[#e1cfe6]/60 shadow-lg p-8 md:p-10 hover:shadow-xl transition-shadow" data-aos="fade-right">
-            <div className="w-14 h-14 bg-[#402763]/10 rounded-2xl flex items-center justify-center mb-6">
-              <ShieldCheck size={28} className="text-[#402763]" />
+          <div className="group relative bg-[#ede0f2] border border-[#402763]/10 rounded-3xl p-8 md:p-10 hover:border-[#402763]/25 hover:shadow-2xl hover:shadow-[#402763]/15 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden" data-aos="fade-right">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl pointer-events-none" />
+            <div className="relative z-10 w-14 h-14 bg-[#402763] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#5a3585] transition-all duration-300 shadow-lg shadow-[#402763]/30">
+              <ShieldCheck size={28} className="text-white" />
             </div>
-            <h3 className="text-2xl font-black text-[#402763] mb-4">Passenger Protection</h3>
-            <p className="text-[#402763]/70 mb-6 leading-relaxed">
+            <div className="relative z-10 flex items-center gap-1.5 mb-3">
+              <span className="w-2 h-2 rounded-full bg-[#ffcd60]" />
+              <h3 className="text-2xl font-black text-[#402763]">Passenger Protection</h3>
+            </div>
+            <p className="relative z-10 text-[#402763]/70 mb-6 leading-relaxed text-sm">
               Travel confidently with our handpicked network of verified female captains. Features designed specifically to shield you:
             </p>
-            <ul className="space-y-4">
+            <ul className="relative z-10 space-y-4">
               {[
                 "100% verified female captains and vehicle screening",
                 "Instant live GPS journey sharing with family/friends",
@@ -182,23 +192,28 @@ const Safety = () => {
                 "Completely masked phone numbers to protect your privacy"
               ].map((p, index) => (
                 <li key={index} className="flex gap-3 items-start text-[#402763]/70 text-sm">
-                  <span className="w-5 h-5 rounded-full bg-[#ffcd60]/20 flex items-center justify-center shrink-0 mt-0.5 text-[#ffcd60] font-bold">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-[#402763]/15 flex items-center justify-center shrink-0 mt-0.5 text-[#402763] font-bold">✓</span>
                   <span>{p}</span>
                 </li>
               ))}
             </ul>
+            <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#ffcd60] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-b-3xl" />
           </div>
 
           {/* Captain Safety Card */}
-          <div className="bg-white rounded-4xl border border-[#e1cfe6]/60 shadow-lg p-8 md:p-10 hover:shadow-xl transition-shadow" data-aos="fade-left" data-aos-delay="100">
-            <div className="w-14 h-14 bg-[#ffcd60]/20 rounded-2xl flex items-center justify-center mb-6">
-              <UserCheck size={28} className="text-[#ffcd60]" />
+          <div className="group relative bg-[#ede0f2] border border-[#402763]/10 rounded-3xl p-8 md:p-10 hover:border-[#402763]/25 hover:shadow-2xl hover:shadow-[#402763]/15 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden" data-aos="fade-left" data-aos-delay="100">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl pointer-events-none" />
+            <div className="relative z-10 w-14 h-14 bg-[#402763] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#5a3585] transition-all duration-300 shadow-lg shadow-[#402763]/30">
+              <UserCheck size={28} className="text-white" />
             </div>
-            <h3 className="text-2xl font-black text-[#402763] mb-4">Captain Safety & Support</h3>
-            <p className="text-[#402763]/70 mb-6 leading-relaxed">
+            <div className="relative z-10 flex items-center gap-1.5 mb-3">
+              <span className="w-2 h-2 rounded-full bg-[#ffcd60]" />
+              <h3 className="text-2xl font-black text-[#402763]">Captain Safety & Support</h3>
+            </div>
+            <p className="relative z-10 text-[#402763]/70 mb-6 leading-relaxed text-sm">
               We empower our female captains with comprehensive tools to ensure a risk-free, stable work environment:
             </p>
-            <ul className="space-y-4">
+            <ul className="relative z-10 space-y-4">
               {[
                 "Pre-screened and identity-verified passenger profiles",
                 "Verified safe pickup and drop-off zones",
@@ -206,11 +221,12 @@ const Safety = () => {
                 "24/7 dedicated driver hotline for support on the road"
               ].map((c, index) => (
                 <li key={index} className="flex gap-3 items-start text-[#402763]/70 text-sm">
-                  <span className="w-5 h-5 rounded-full bg-[#402763]/10 flex items-center justify-center shrink-0 mt-0.5 text-[#402763] font-bold">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-[#402763]/15 flex items-center justify-center shrink-0 mt-0.5 text-[#402763] font-bold">✓</span>
                   <span>{c}</span>
                 </li>
               ))}
             </ul>
+            <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#ffcd60] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-b-3xl" />
           </div>
         </div>
       </section>
@@ -307,23 +323,32 @@ const Safety = () => {
 
       {/* Captain Screening Timeline */}
       <section className="container mx-auto px-6 py-24">
-        <div className="text-center mb-16" data-aos="fade-up">
-          <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-3">Trust Through Action</p>
-          <h2 className="text-3xl lg:text-4xl font-black text-[#402763]">Our Captain Verification Pipeline</h2>
-          <p className="text-[#402763]/60 max-w-xl mx-auto mt-4">Every captain undergoes a rigorous four-phase vetting process before she can drive with SHEGO.</p>
+            <div className="text-center mb-16" data-aos="fade-up">
+          <p className="text-[#402763] font-bold uppercase tracking-widest text-sm mb-3 flex items-center justify-center gap-2">
+            <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full" />
+           Trust Through Action
+            <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full" />
+          </p>
+          <h2 className="text-4xl font-black text-[#402763] mb-4">Our Captain Verification Pipeline</h2>
+          <p className="text-[#402763]/60 max-w-xl mx-auto">
+            Every captain undergoes a rigorous four-phase vetting process before she can drive with SHEGO.
+          </p>
         </div>
+       
 
-        <div className="max-w-4xl mx-auto relative border-l-2 border-[#e1cfe6] ml-4 md:ml-auto">
+        <div className="max-w-4xl mx-auto relative border-l-2 border-[#ede0f2] ml-4 md:ml-auto">
           {onboardingSteps.map((step, i) => (
             <div key={i} className="mb-12 relative pl-8 md:pl-12" data-aos="fade-up" data-aos-delay={i * 100}>
               {/* Dot */}
-              <div className="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-[#402763] border-4 border-white flex items-center justify-center shadow-md">
+              <div className="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-[#402763] border-4 border-[#402763] flex items-center justify-center shadow-md z-10">
                 {step.icon}
               </div>
-              <div className="bg-white border border-[#e1cfe6]/60 rounded-3xl p-6 md:p-8 shadow-sm hover:shadow-md transition-all">
-                <span className="text-xs font-black text-[#ffcd60] uppercase tracking-wide">Phase 0{i + 1}</span>
-                <h3 className="text-xl font-black text-[#402763] mt-1 mb-2">{step.title}</h3>
-                <p className="text-[#402763]/70 text-sm leading-relaxed">{step.desc}</p>
+              <div className="group relative bg-[#ede0f2] border border-[#402763]/10 rounded-3xl p-6 md:p-8 hover:border-[#402763]/25 hover:shadow-2xl hover:shadow-[#402763]/15 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl pointer-events-none" />
+                <span className="relative z-10 text-xs font-black text-[#ffcd60] uppercase tracking-wide">Phase 0{i + 1}</span>
+                <h3 className="relative z-10 text-xl font-black text-[#402763] mt-1 mb-2">{step.title}</h3>
+                <p className="relative z-10 text-[#402763]/70 text-sm leading-relaxed">{step.desc}</p>
+                <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#ffcd60] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-b-3xl" />
               </div>
             </div>
           ))}
@@ -334,19 +359,35 @@ const Safety = () => {
       <section className="bg-white py-24">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16" data-aos="fade-up">
-            <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-3">Extra Security Layers</p>
-            <h2 className="text-3xl lg:text-4xl font-black text-[#402763]">Advanced Ride Safety Features</h2>
-            <p className="text-[#402763]/60 max-w-xl mx-auto mt-4">We go beyond the basics to incorporate smart tools that keep you protected throughout the ride.</p>
+            <p className="text-[#402763] font-bold uppercase tracking-widest text-sm mb-3 flex items-center justify-center gap-2">
+              <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full" />
+              Extra Security Layers
+              <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full" />
+            </p>
+            <h2 className="text-4xl font-black text-[#402763] mb-4">Advanced Ride Safety Features</h2>
+            <p className="text-[#402763]/60 max-w-xl mx-auto">
+              We go beyond the basics to incorporate smart tools that keep you protected throughout the ride.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {safetyFeatures.map((item, index) => (
-              <div key={index} className="p-8 rounded-3xl border border-[#e1cfe6]/60 bg-slate-50/50 hover:bg-white hover:shadow-xl transition-all duration-300" data-aos="fade-up" data-aos-delay={index * 100}>
-                <div className="w-12 h-12 rounded-2xl bg-[#402763]/10 flex items-center justify-center mb-6">
+              <div
+                key={index}
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="group relative bg-[#ede0f2] border border-[#402763]/10 rounded-3xl p-8 hover:border-[#402763]/25 hover:shadow-2xl hover:shadow-[#402763]/15 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-3xl pointer-events-none" />
+                <div className="relative z-10 w-14 h-14 bg-[#402763] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#5a3585] transition-all duration-300 shadow-lg shadow-[#402763]/30">
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-bold text-[#402763] mb-3">{item.title}</h3>
-                <p className="text-sm text-[#402763]/70 leading-relaxed">{item.desc}</p>
+                <div className="relative z-10 flex items-center gap-1.5 mb-3">
+                  <span className="w-2 h-2 rounded-full bg-[#ffcd60]" />
+                  <h3 className="text-lg font-bold text-[#402763]">{item.title}</h3>
+                </div>
+                <p className="relative z-10 text-[#402763]/70 text-sm leading-relaxed">{item.desc}</p>
+                <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-[#ffcd60] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-b-3xl" />
               </div>
             ))}
           </div>
@@ -354,44 +395,50 @@ const Safety = () => {
       </section>
 
       {/* Safety FAQ Section */}
-      <section className="container mx-auto px-6 py-24">
-        <div className="text-center mb-16" data-aos="fade-up">
-          <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-3">FAQ</p>
-          <h2 className="text-3xl lg:text-4xl font-black text-[#402763]">Frequently Asked Questions</h2>
-          <p className="text-[#402763]/60 max-w-xl mx-auto mt-4">Everything you need to know about our safety standards and technology.</p>
-        </div>
+      <section className="bg-[#ede0f2] py-24">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16" data-aos="fade-up">
+            <p className="text-[#402763] font-bold uppercase tracking-widest text-sm mb-3 flex items-center justify-center gap-2">
+              <span className="inline-block w-8 h-0.5 bg-[#402763] rounded-full" />
+              FAQ
+              <span className="inline-block w-8 h-0.5 bg-[#402763] rounded-full" />
+            </p>
+            <h2 className="text-3xl lg:text-4xl font-black text-[#402763]">Frequently Asked Questions</h2>
+            <p className="text-[#402763]/70 max-w-xl mx-auto mt-4">Everything you need to know about our safety standards and technology.</p>
+          </div>
 
-        <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq, idx) => {
-            const isOpen = activeFaq === idx;
-            return (
-              <div 
-                key={idx} 
-                className="bg-white rounded-2xl border border-[#e1cfe6]/60 overflow-hidden transition-all duration-300 shadow-sm"
-                data-aos="fade-up"
-              >
-                <button
-                  onClick={() => setActiveFaq(isOpen ? null : idx)}
-                  className="w-full text-left px-6 py-5 md:px-8 flex justify-between items-center gap-4 hover:bg-slate-50 transition-colors"
-                >
-                  <span className="font-bold text-[#402763] text-base md:text-lg">{faq.q}</span>
-                  <span className="text-[#402763]/60 shrink-0">
-                    {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                  </span>
-                </button>
-                
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faqs.map((faq, idx) => {
+              const isOpen = activeFaq === idx;
+              return (
                 <div 
-                  className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                    isOpen ? 'max-h-64 border-t border-[#e1cfe6]/40' : 'max-h-0'
-                  }`}
+                  key={idx} 
+                  className="bg-white rounded-2xl border border-[#402763]/10 overflow-hidden transition-all duration-300 shadow-md shadow-[#402763]/5"
+                  data-aos="fade-up"
                 >
-                  <p className="px-6 py-5 md:px-8 text-sm md:text-base text-[#402763]/70 leading-relaxed bg-[#e1cfe6]/10">
-                    {faq.a}
-                  </p>
+                  <button
+                    onClick={() => setActiveFaq(isOpen ? null : idx)}
+                    className="w-full text-left px-6 py-5 md:px-8 flex justify-between items-center gap-4 hover:bg-[#ede0f2]/40 transition-colors"
+                  >
+                    <span className="font-bold text-[#402763] text-base md:text-lg">{faq.q}</span>
+                    <span className="text-[#402763]/60 shrink-0">
+                      {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                    </span>
+                  </button>
+                  
+                  <div 
+                    className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                      isOpen ? 'max-h-64 border-t border-[#402763]/10' : 'max-h-0'
+                    }`}
+                  >
+                    <p className="px-6 py-5 md:px-8 text-sm md:text-base text-[#402763]/80 leading-relaxed bg-[#ede0f2]/30">
+                      {faq.a}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </section>
 

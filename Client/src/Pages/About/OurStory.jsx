@@ -25,17 +25,25 @@ const OurStory = () => {
             </div>
             {/* Floating stat */}
             <div className="absolute -right-6 -bottom-6 bg-white border border-[#e1cfe6] rounded-2xl p-2 md:p-5 shadow-xl">
-              <div className="text-xl md:text-3xl font-black text-[#402763]">2023</div>
+              <div className="text-xl md:text-3xl font-black text-[#402763]">2026</div>
               <div className="text-xs md:text-sm text-[#402763]/60 font-medium">Year Founded</div>
             </div>
           </div>
 
           {/* Content */}
           <div className="lg:w-1/2" data-aos="fade-left" data-aos-delay="100">
-            <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-3">Our Story</p>
+              <div className="  flex justify-start" data-aos="fade-up">
+          <p className="text-[#402763] font-bold uppercase tracking-widest text-sm mb-3 flex items-center justify-center gap-2">
+            <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full" />
+          Our Story
+            <span className="inline-block w-8 h-0.5 bg-[#ffcd60] rounded-full" />
+          </p>
+         
+        </div>
+            <p className="text-[#ffcd60] font-bold uppercase tracking-widest text-sm mb-3"></p>
             <h2 className="text-4xl font-black text-[#402763] mb-6 leading-tight">
-            HER JOURNEY 
-``              <br />ON HER OWN TERMS
+            HER JOURNEY ON
+             <br /> HER OWN TERMS
             </h2>
             <p className="text-[#402763]/70 leading-relaxed mb-5">
               SHEGO was founded when our team realized that women across Pakistan faced daily challenges while commuting — from harassment to feeling unsafe in late hours.

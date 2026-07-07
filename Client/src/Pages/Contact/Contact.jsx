@@ -49,14 +49,18 @@ const Contact = () => {
       {/* Map placeholder */}
       <section className="bg-[#e1cfe6]/20 py-16">
         <div className="container mx-auto px-6">
-          <div className="rounded-3xl overflow-hidden border border-[#e1cfe6]/60 shadow-lg h-72 bg-gradient-to-br from-[#e1cfe6]/60 to-[#402763]/10 flex items-center justify-center">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#402763] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Mail size={28} className="text-[#ffcd60]" />
-              </div>
-              <p className="text-[#402763] font-bold">Map integration will be added</p>
-              <p className="text-[#402763]/50 text-sm">Lahore, Pakistan</p>
-            </div>
+          <div className="rounded-3xl overflow-hidden border border-[#e1cfe6]/60 shadow-lg h-96 w-full relative" data-aos="fade-up">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27221.494502795264!2d74.4642858!3d31.477800400000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190918124697dd%3A0x91a9780a0b2a307d!2sRaya%20Lahore%20Office!5e0!3m2!1sen!2s!4v1783406286446!5m2!1sen!2s"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title="SHEGO Office Location - Raya Lahore"
+              className="grayscale-[20%] hover:grayscale-0 transition-all duration-500"
+            />
           </div>
         </div>
       </section>

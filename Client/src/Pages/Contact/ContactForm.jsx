@@ -41,8 +41,15 @@ const ContactForm = () => {
 
   return (
     <div className="bg-[#e1cfe6] rounded-3xl border border-[#e1cfe6]/60 p-8 md:p-10 shadow-lg shadow-[#402763]/5" data-aos="fade-up" data-aos-delay="100">
-      <h2 className="text-2xl font-black text-[#402763] mb-2">Send Us a Message</h2>
-      <p className="text-[#402763]/60 text-sm mb-8">We read every message and respond within 24 hours.</p>
+      <div className="flex items-start justify-between gap-4 flex-wrap mb-6">
+        <div>
+          <h2 className="text-2xl font-black text-[#402763] mb-1">Send Us a Message</h2>
+          <p className="text-[#402763]/60 text-sm">We read every message and respond within 24 hours.</p>
+        </div>
+        <span className="text-[10px] font-black text-white uppercase tracking-widest bg-[#402763] px-2.5 py-1 rounded-full shadow-md shadow-[#402763]/25">
+          SHEGO: The Feminine Rights
+        </span>
+      </div>
 
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
