@@ -44,7 +44,7 @@ const EmergencyCTA = () => {
             </h2>
 
             <p className="text-[#e1cfe6]/70 text-lg mb-6 max-w-xl">
-              Our built-in <strong className="text-white">SOS Emergency Button</strong> instantly shares your live location with your emergency contacts via Email and WhatsApp — and repeats every 5 minutes until you're safe.
+              Our built-in <strong className="text-white">SOS Emergency Button</strong> instantly shares your live location with your emergency contacts via Email and WhatsApp and repeats every 5 minutes until you're safe.
             </p>
 
             <ul className="space-y-3 mb-8 text-left max-w-md mx-auto lg:mx-0">

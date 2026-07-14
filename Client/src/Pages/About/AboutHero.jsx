@@ -22,7 +22,7 @@ const AboutHero = () => {
           <span className="text-[#ffcd60]"> for Her</span>
         </h1>
         <p className="text-[#e1cfe6]/70 text-xl max-w-2xl mx-auto leading-relaxed">
-          SHEGO was built with a singular purpose — to give every woman the freedom to travel safely, confidently, and independently.
+          SHEGO was built with a singular purpose to give every woman the freedom to travel safely, confidently, and independently.
         </p>
       </div>
 

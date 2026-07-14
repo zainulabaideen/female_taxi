@@ -57,6 +57,10 @@ const Navbar = () => {
             ))}
           </div>
 
+          <div className="flex md:hidden items-center gap-1">
+          <span className="text-xs font-black text-[#402763] tracking-widest bg-[#ede0f2] px-3.5 py-1 rounded-full mt-2 border border-[#402763]/10">SHEGO: The Feminine Drive</span>
+          </div>
+
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <Link

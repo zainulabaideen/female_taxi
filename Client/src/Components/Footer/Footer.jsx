@@ -16,7 +16,7 @@ const Footer = () => {
               <img src="logo.png" alt="SHEGO Logo" className="w-18 object-contain" />
             </Link>
             <p className="text-[#402763]/70 text-sm leading-relaxed mb-6">
-              Safe, reliable, and empowering rides for women — by women. Your safety is our top priority, every single trip.
+              Safe, reliable, and empowering rides for women by women. Your safety is our top priority, every single trip.
             </p>
             <div className="flex gap-3">
               {[

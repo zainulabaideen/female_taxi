@@ -10,7 +10,7 @@ const features = [
   {
     icon: Clock,
     title: '24/7 Availability',
-    desc: 'Book a ride any time of day — our captain set flexible available schedules.',
+    desc: 'Book a ride any time of day our captain set flexible available schedules.',
   },
   {
     icon: Wallet,

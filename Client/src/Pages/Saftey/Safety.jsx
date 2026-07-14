@@ -41,12 +41,12 @@ const Safety = () => {
     {
       icon: <Lock className="text-white" size={24} />,
       title: "Number Masking",
-      desc: "Your personal contact number is never shared. All in-app calls are routed securely through masked lines."
+      desc: "Your personal contact number is never shared. All in app calls are routed securely through masked lines."
     },
     {
       icon: <Share2 className="text-white" size={24} />,
       title: "Share Journey Status",
-      desc: "Send a live tracking link to friends or family with one tap, allowing them to follow your route in real-time."
+      desc: "Send a live tracking link to friends or family with one tap, allowing them to follow your route in real time."
     },
     {
       icon: <Eye className="text-white" size={24} />,
@@ -129,7 +129,7 @@ const Safety = () => {
             <span className="text-[#ffcd60]">Built for Peace of Mind</span>
           </h1>
           <p className="text-[#e1cfe6]/80 text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
-            At SHEGO, safety isn't a feature—it's our foundation. We've built multiple layers of protection so you can travel with confidence.
+            At SHEGO, safety isn't a feature  it's our foundation. We've built multiple layers of protection so you can travel with confidence.
           </p>
         </div>
 
@@ -247,7 +247,7 @@ const Safety = () => {
                 <span className="text-[#ffcd60]">Emergency Button Works</span>
               </h2>
               <p className="text-[#e1cfe6]/80 leading-relaxed mb-8">
-                We've built a multi-channel safety protocol. With a single press, SHEGO doesn't just send one notification—it initiates a continuous loop of alerts so your family stays informed in real-time.
+                We've built a multi-channel safety protocol. With a single press, SHEGO doesn't just send one notification it initiates a continuous loop of alerts so your family stays informed in real-time.
               </p>
 
               <div className="space-y-6">
@@ -331,7 +331,7 @@ const Safety = () => {
           </p>
           <h2 className="text-4xl font-black text-[#402763] mb-4">Our Captain Verification Pipeline</h2>
           <p className="text-[#402763]/60 max-w-xl mx-auto">
-            Every captain undergoes a rigorous four-phase vetting process before she can drive with SHEGO.
+            Every captain undergoes a rigorous four phase vetting process before she can drive with SHEGO.
           </p>
         </div>
        

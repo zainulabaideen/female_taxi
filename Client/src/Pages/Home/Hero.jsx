@@ -35,7 +35,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-[#e1cfe6]/80 text-base lg:text-lg max-w-md leading-relaxed mb-8">
-              Book trusted, verified female captain in minutes. Travel safely, comfortably, and confidently — every single day.
+              Book trusted, verified female captain in minutes. Travel safely, comfortably, and confidently every single day.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -57,7 +57,7 @@ const Hero = () => {
             {/* Stats Row */}
             <div className="mt-10 flex gap-8 pb-2">
               {[
-                { value: '500+', label: 'Female captain' },
+                { value: '500+', label: 'Female Captain' },
                 { value: '10K+', label: 'Happy Rides' },
                 { value: '4.9★', label: 'Average Rating' },
               ].map((stat, i) => (
@@ -71,9 +71,9 @@ const Hero = () => {
 
           {/* Right — Illustration Card */}
           <div className="lg:w-[55%] w-full flex justify-center" data-aos="fade-left" data-aos-delay="200">
-            <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[580px]">
+            <div className="relative w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[580px] xl:max-w-[680px] 2xl:max-w-[760px]">
               {/* Main Image Card */}
-              <div className="w-full h-[320px] sm:h-[380px] lg:h-[480px] rounded-[2.5rem] overflow-hidden border-4 border-white/20 shadow-2xl shadow-black/40">
+              <div className="w-full h-[320px] sm:h-[380px] lg:h-[480px]  2xl:h-[620px]rounded-[2.5rem] overflow-hidden border-4 border-white/20 shadow-2xl shadow-black/40">
                 <img
                   src="/hero-driver.webp"
                   alt="Verified Female Ride Driver — SHEGO"
@@ -90,7 +90,7 @@ const Hero = () => {
                 </div>
                 <div>
                   <div className="text-xs font-black text-[#402763]">100% Safe</div>
-                  <div className="text-xs text-gray-400">Verified captain</div>
+                  <div className="text-xs text-gray-400">Verified Captain</div>
                 </div>
               </div>
 

@@ -99,7 +99,7 @@ const SignUp = () => {
       <div className="w-full max-w-2xl">
         <Link to="/" className="flex flex-col items-center justify-center gap-2 mb-8">
           <img src="logo.png" alt="shego" className='md:w-18 w-12' />
-          <span className="text-xs font-black text-[#402763] uppercase tracking-widest bg-[#ede0f2] px-3.5 py-1 rounded-full mt-2 border border-[#402763]/10">SHEGO: The Feminine Rights</span>
+          <span className="text-xs font-black text-[#402763] uppercase tracking-widest bg-[#ede0f2] px-3.5 py-1 rounded-full mt-2 border border-[#402763]/10">SHEGO: The Feminine Drive</span>
         </Link>
 
         {/* Progress Bar */}

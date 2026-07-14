@@ -12,14 +12,14 @@ const values = [
   {
     icon: Heart,
     title: 'Empowerment',
-    desc: 'We empower women as both passengers and captain — earning, traveling, and thriving freely.',
+    desc: 'We empower women as both passengers and captain earning, traveling, and thriving freely.',
     color: 'bg-[#402763] text-white',
     accent: 'border-[#402763]/20',
   },
   {
     icon: Users,
     title: 'Community',
-    desc: 'SHEGO is more than an app — it\'s a community of women supporting women.',
+    desc: 'SHEGO is more than an app it\'s a community of women supporting women.',
     color: 'bg-[#402763] text-white',
     accent: 'border-[#402763]/20',
   },

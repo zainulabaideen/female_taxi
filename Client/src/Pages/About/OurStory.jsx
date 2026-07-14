@@ -46,7 +46,7 @@ const OurStory = () => {
              <br /> HER OWN TERMS
             </h2>
             <p className="text-[#402763]/70 leading-relaxed mb-5">
-              SHEGO was founded when our team realized that women across Pakistan faced daily challenges while commuting — from harassment to feeling unsafe in late hours.
+              SHEGO was founded when our team realized that women across Pakistan faced daily challenges while commuting from harassment to feeling unsafe in late hours.
             </p>
             <p className="text-[#402763]/70 leading-relaxed mb-8">
               We created a platform where <strong className="text-[#402763]">verified female captain</strong> serve female passengers exclusively. Combined with our <strong className="text-[#402763]">SOS emergency system</strong>, we ensure your family is always in the loop when it matters most.
