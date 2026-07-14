@@ -5,7 +5,7 @@ const info = [
   {
     icon: MapPin,
     title: 'Our Office',
-    lines: ['123 Women\'s Safety Blvd', 'Lahore, Pakistan'],
+    lines: ['123 Women\'s Safety', 'Lahore, Pakistan'],
     color: 'bg-[#402763] text-white',
   },
   {

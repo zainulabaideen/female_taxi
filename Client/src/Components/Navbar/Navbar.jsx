@@ -40,7 +40,7 @@ const Navbar = () => {
            <img src="/final/SheGo Final Colored Logo-01-07.png" alt="shego" className='w-12 block md:hidden'/>
 
           </Link>
-           <img src="/final/SheGo Final Colored Logo-01-04.png" alt="shego" className='w-22 h-10 font-bold block md:hidden place-items-center'/>
+           <img src="/final/SheGo Final Colored Logo-01-04.png" alt="shego" className='w-14 h-8 font-bold block md:hidden place-items-center'/>
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-1">

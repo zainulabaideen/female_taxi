@@ -268,7 +268,7 @@ const SignUp = () => {
           {step === 3 && (
             <form onSubmit={handleSubmit}>
               <h1 className="text-2xl font-black text-[#402763] mb-2">
-                {role === 'driver' ? '🚗 Driver Setup' : '🛡️ Safety Setup'}
+                {role === 'driver' ? ' Driver Setup' : '🛡️ Safety Setup'}
               </h1>
               <p className="text-[#402763]/60 text-sm mb-8">
                 {role === 'driver'
